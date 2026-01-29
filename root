@@ -1,1 +1,112 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourCompany | Incident Response & AppSec</title>
+
+  <!-- Security headers (effective on Netlify / GitHub Pages via meta fallback) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+
+  <!-- Self-hosted Tailwind (replace with your compiled CSS) -->
+  <link rel="stylesheet" href="./assets/tailwind.min.css">
+
+  <style>
+    canvas { position: fixed; inset: 0; z-index: -1; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
+
+<canvas id="bg"></canvas>
+
+<section class="min-h-screen flex items-center justify-center px-6">
+  <div class="text-center max-w-3xl">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">Security that <span class="text-cyan-400">responds</span></h1>
+    <p class="text-lg text-slate-300">Incident Response • Application Security • Security Workshops</p>
+  </div>
+</section>
+
+<section class="min-h-screen px-10 py-24 grid md:grid-cols-3 gap-10">
+  <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
+    <h3 class="text-xl font-semibold mb-3">Incident Response</h3>
+    <p class="text-slate-300">Detection, containment, eradication, recovery, and post-incident hardening.</p>
+  </div>
+  <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
+    <h3 class="text-xl font-semibold mb-3">Application Security</h3>
+    <p class="text-slate-300">Threat modeling, secure SDLC, AppSec reviews, and automation-first controls.</p>
+  </div>
+  <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
+    <h3 class="text-xl font-semibold mb-3">Workshops</h3>
+    <p class="text-slate-300">Hands-on training for SOC teams, developers, and security leadership.</p>
+  </div>
+</section>
+
+<footer class="px-10 py-12 text-sm text-slate-400 border-t border-slate-800">
+  <p class="mb-2"><strong>Privacy:</strong> No tracking, no cookies, no analytics. This site does not collect or store personal data.</p>
+  <p class="mb-2"><strong>Security:</strong> Static site with no authentication, forms, or client-side data storage.</p>
+  <p>© YourCompany</p>
+</footer>
+
+<script>
+'use strict';
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [], mouse = {x: 0, y: 0}, scrollY = 0;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+window.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+window.addEventListener('scroll', () => scrollY = window.scrollY);
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.6;
+    this.vy = (Math.random() - 0.5) * 0.6;
+    this.size = Math.random() * 2 + 1;
+  }
+  update() {
+    const dx = mouse.x - this.x;
+    const dy = mouse.y - this.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 120) {
+      this.x -= dx * 0.01;
+      this.y -= dy * 0.01;
+    }
+    this.x += this.vx;
+    this.y += this.vy + scrollY * 0.00002;
+    if (this.x < 0 || this.x > w) this.vx *= -1;
+    if (this.y < 0 || this.y > h) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(56,189,248,0.8)';
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
