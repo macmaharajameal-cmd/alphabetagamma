@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Security | Incident Response & AppSec</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>YourCompany | Incident Response & AppSec</title>
+
+  <!-- Security headers (effective on Netlify / GitHub Pages via meta fallback) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+
+  <!-- Self-hosted Tailwind (replace with your compiled CSS) -->
+  <link rel="stylesheet" href="./assets/tailwind.min.css">
+
   <style>
     canvas { position: fixed; inset: 0; z-index: -1; }
   </style>
@@ -23,19 +31,26 @@
 <section class="min-h-screen px-10 py-24 grid md:grid-cols-3 gap-10">
   <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
     <h3 class="text-xl font-semibold mb-3">Incident Response</h3>
-    <p class="text-slate-300">24x7 triage, threat containment, forensic analysis, and post-incident hardening.</p>
+    <p class="text-slate-300">Detection, containment, eradication, recovery, and post-incident hardening.</p>
   </div>
   <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
     <h3 class="text-xl font-semibold mb-3">Application Security</h3>
-    <p class="text-slate-300">Secure SDLC, threat modeling, AppSec reviews, and automation-first security.</p>
+    <p class="text-slate-300">Threat modeling, secure SDLC, AppSec reviews, and automation-first controls.</p>
   </div>
   <div class="p-8 rounded-2xl bg-slate-900/60 backdrop-blur shadow-lg">
     <h3 class="text-xl font-semibold mb-3">Workshops</h3>
-    <p class="text-slate-300">Hands-on training for SOC teams, developers, and security leaders.</p>
+    <p class="text-slate-300">Hands-on training for SOC teams, developers, and security leadership.</p>
   </div>
 </section>
 
+<footer class="px-10 py-12 text-sm text-slate-400 border-t border-slate-800">
+  <p class="mb-2"><strong>Privacy:</strong> No tracking, no cookies, no analytics. This site does not collect or store personal data.</p>
+  <p class="mb-2"><strong>Security:</strong> Static site with no authentication, forms, or client-side data storage.</p>
+  <p>© YourCompany</p>
+</footer>
+
 <script>
+'use strict';
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let w, h, particles = [], mouse = {x: 0, y: 0}, scrollY = 0;
