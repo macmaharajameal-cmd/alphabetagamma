@@ -40,3 +40,9 @@ Industry coverage cards explain systems, telemetry, and operational priorities. 
 ## Security maintenance
 
 See [SECURITY.md](SECURITY.md) for the reviewed boundaries, fixed issues, tests, and GitHub Pages header limitations. Feed parsing runs separately from publishing; run `python -m unittest discover -s scripts -p "test_*.py"` before changing the ingestion or classification code. Actions are SHA-pinned and should be reviewed when updating those pins.
+
+## Packet Patrol arcade
+
+`docs/arcade.html` is a first-party pixel-art game implemented in `assets/arcade.js` and `assets/arcade.css`. Arcade mode lasts 60 active seconds across three waves with five integrity points. Escaped threats and friendly hits cost integrity; misses break the streak. Practice is untimed, slower, and does not lose integrity. Scores and best-this-visit stay in memory and reset on reload; there is no leaderboard service, persistent storage, telemetry, or external asset dependency. Sound uses Web Audio only after a visitor opts in.
+
+Mouse/touch aiming, keyboard reticle controls, and a regular-button target panel are available. Hiding the tab pauses the round. Reduced-motion settings stop target motion and particle effects; newly spawned targets remain visible. Start/restart scrolls the cabinet into view. The existing strict CSP remains unchanged. The game simulates defensive decisions and does not scan or connect to any systems.
