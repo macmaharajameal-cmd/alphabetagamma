@@ -21,32 +21,72 @@ async function loadFeed() {
   data.items = data.items.filter(item => item && typeof item.title === 'string' && safeLink(item.url));
   return data;
 }
+let tickerCleanup = () => {};
+let tickerUserPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function renderTicker(data) {
-  const link = document.getElementById('ticker-link');
-  if (!link || !data.items.length) return;
+  const viewport = document.getElementById('ticker-viewport');
+  if (!viewport || !data.items.length) return;
+  tickerCleanup();
+  const abort = new AbortController();
+  const options = {signal: abort.signal};
   const items = data.items.slice(0, 15);
-  let index = 0;
+  const track = element('div', 'ticker-track');
+  // The moving tape has a stationary, keyboard-accessible alternative: Read all headlines.
+  track.setAttribute('aria-hidden', 'true');
+  const group = element('div', 'ticker-group');
+  items.forEach(item => {
+    const link = element('a', 'ticker-item');
+    link.href = item.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.tabIndex = -1;
+    link.title = `${item.source} · ${fmt(item.publishedAt)} · ${item.title}`;
+    link.append(element('span', 'ticker-source', item.source), element('span', 'ticker-headline', item.title), element('span', 'ticker-separator', '◆'));
+    group.append(link);
+  });
+  track.append(group, group.cloneNode(true));
+  viewport.replaceChildren(track);
+  const wrap = viewport.closest('.ticker-wrap');
   const pause = document.getElementById('ticker-pause');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = reduced.matches;
-  const show = () => {
-    const item = items[index];
-    link.textContent = `${item.source} · ${fmt(item.publishedAt)} · ${item.title}`;
-    link.href = item.url;
-    link.target = '_blank'; link.rel = 'noopener noreferrer';
-  };
-  const setPaused = () => { pause.textContent = paused ? 'Play' : 'Pause'; pause.setAttribute('aria-pressed', String(paused)); };
-  document.getElementById('ticker-next').addEventListener('click', () => { index = (index + 1) % items.length; show(); });
-  document.getElementById('ticker-prev').addEventListener('click', () => { index = (index + items.length - 1) % items.length; show(); });
-  pause.addEventListener('click', () => { paused = !paused; setPaused(); });
-  reduced.addEventListener('change', () => { if (reduced.matches) { paused = true; setPaused(); } });
-  setPaused(); show();
-  const wrap = link.closest('.ticker-wrap');
-  window.setInterval(() => {
-    if (!paused && !document.hidden && !wrap.matches(':hover') && !wrap.contains(document.activeElement)) {
-      index = (index + 1) % items.length; show();
+  let animation, width = 0, duration = 0, index = 0;
+  function sync() {
+    const temporarilyPaused = document.hidden || wrap.matches(':hover') || wrap.contains(document.activeElement);
+    if (animation) {
+      if (tickerUserPaused || temporarilyPaused) animation.pause(); else animation.play();
     }
-  }, 9000);
+    pause.textContent = tickerUserPaused ? 'Play' : 'Pause';
+    pause.setAttribute('aria-pressed', String(tickerUserPaused));
+  }
+  function measure() {
+    const newWidth = group.getBoundingClientRect().width;
+    if (!newWidth || Math.abs(newWidth - width) < 1) return;
+    const progress = animation && duration ? (Number(animation.currentTime) % duration) / duration : 0;
+    if (animation) animation.cancel();
+    width = newWidth;
+    duration = width / 32 * 1000; // Constant readable speed: 32 CSS pixels per second.
+    // Two identical groups make the left-to-right wrap seamless at every viewport width.
+    animation = track.animate([{transform: `translateX(${-width}px)`}, {transform: 'translateX(0px)'}], {duration, iterations: Infinity, easing: 'linear'});
+    animation.currentTime = progress * duration;
+    sync();
+  }
+  function seek(delta) {
+    index = (index + delta + items.length) % items.length;
+    const offset = group.children[index].offsetLeft - group.offsetLeft;
+    if (animation) animation.currentTime = ((width - offset) % width) / width * duration;
+  }
+  document.getElementById('ticker-next').addEventListener('click', () => seek(1), options);
+  document.getElementById('ticker-prev').addEventListener('click', () => seek(-1), options);
+  pause.addEventListener('click', () => { tickerUserPaused = !tickerUserPaused; sync(); }, options);
+  reduced.addEventListener('change', () => { if (reduced.matches) tickerUserPaused = true; sync(); }, options);
+  wrap.addEventListener('mouseenter', sync, options); wrap.addEventListener('mouseleave', sync, options);
+  wrap.addEventListener('focusin', sync, options);
+  wrap.addEventListener('focusout', () => requestAnimationFrame(sync), options);
+  document.addEventListener('visibilitychange', sync, options);
+  const observer = new ResizeObserver(measure); observer.observe(group);
+  measure();
+  const updated = document.getElementById('ticker-updated');
+  const latestSuccess = Math.max(...(data.sources || []).map(source => Date.parse(source.lastSuccessAt) || 0));
+  const stale = !latestSuccess || Date.now() - latestSuccess > 12 * 3600000;
+  updated.textContent = `Updated ${fmt(latestSuccess || data.checkedAt)} · Automatic refresh every 6 hours${stale ? ' · Updates delayed; check the original publishers' : ''}`;
+  tickerCleanup = () => { abort.abort(); observer.disconnect(); if (animation) animation.cancel(); };
 }
 function renderNews(data) {
   const list = document.getElementById('stories');
@@ -54,15 +94,24 @@ function renderNews(data) {
   const search = document.getElementById('search');
   const windowSelect = document.getElementById('window');
   const feedStatus = document.getElementById('feed-status');
-  const items = page === 'breaches' ? data.items.filter(i => i.incident) : data.items;
+  let items = page === 'breaches' ? data.items.filter(i => i.incident) : data.items;
   [...new Set(items.map(i => i.source))].sort().forEach(name => {
     const option = element('option', '', name); option.value = name; source.append(option);
   });
+  function updateStatus(data) {
   const lastCheck = Date.parse(data.checkedAt);
   const old = !Number.isFinite(lastCheck) || Date.now() - lastCheck > 12 * 3600000;
   feedStatus.textContent = `Last refresh attempt: ${fmt(data.checkedAt)}.${old ? ' Updates are delayed; check publisher sites for newer reporting.' : ''}`;
   const failures = (data.sources || []).filter(s => s.status !== 'ok');
   if (failures.length) feedStatus.textContent += ` Unavailable on last attempt: ${failures.map(s => s.name).join(', ')}. Previously fetched headlines are retained.`;
+  }
+  updateStatus(data);
+  document.addEventListener('briefing-update', event => {
+    const fresh = event.detail;
+    items = page === 'breaches' ? fresh.items.filter(i => i.incident) : fresh.items;
+    updateStatus(fresh);
+    render();
+  });
   function render() {
     const query = search.value.trim().toLocaleLowerCase();
     const days = windowSelect.value === 'all' ? null : Number(windowSelect.value);
@@ -88,9 +137,38 @@ function renderNews(data) {
   document.getElementById('filters').addEventListener('reset', () => window.setTimeout(render, 0)); render();
 }
 if (['news', 'breaches', 'home', 'social'].includes(page)) {
-  loadFeed().then(data => { if (['news', 'breaches'].includes(page)) renderNews(data); renderTicker(data); }).catch(() => {
-    const status = document.getElementById('feed-status');
-    if (status) status.textContent = 'Headlines are temporarily unavailable. Please use the publisher links below.';
+  let refreshing = false;
+  let lastAttempt = 0;
+  let renderedVersion;
+  async function refreshBriefing() {
+    if (refreshing) return;
+    refreshing = true; lastAttempt = Date.now();
+    try {
+      const data = await loadFeed();
+      // Preserve a visitor's search and tape position when the briefing has not changed.
+      if (data.checkedAt !== renderedVersion) {
+        if (['news', 'breaches'].includes(page)) {
+          if (renderedVersion === undefined) renderNews(data);
+          else {
+            // Keep filters and their listeners intact; replace the list's data on refresh.
+            document.dispatchEvent(new CustomEvent('briefing-update', {detail: data}));
+          }
+        }
+        renderTicker(data); renderedVersion = data.checkedAt;
+      }
+    } catch {
+      if (renderedVersion === undefined) {
+        const status = document.getElementById('feed-status');
+        if (status) status.textContent = 'Headlines are temporarily unavailable. Please use the publisher links below.';
+        const tickerStatus = document.getElementById('ticker-updated');
+        if (tickerStatus) tickerStatus.textContent = 'Briefing temporarily unavailable. Open Cyber news for publisher links.';
+      }
+    } finally { refreshing = false; }
+  }
+  refreshBriefing();
+  window.setInterval(() => { if (!document.hidden) refreshBriefing(); }, 15 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && Date.now() - lastAttempt > 15 * 60 * 1000) refreshBriefing();
   });
 }
 if (page === 'hunts') {

@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-11-15T17:30:42.363666+00:00",
+  "checkedAt": "2026-11-15T17:37:26.797714+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T17:30:42.363404+00:00"
+      "lastSuccessAt": "2026-11-15T17:37:26.643035+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T17:30:42.363454+00:00"
+      "lastSuccessAt": "2026-11-15T17:37:26.797141+00:00"
     }
   ],
   "items": [

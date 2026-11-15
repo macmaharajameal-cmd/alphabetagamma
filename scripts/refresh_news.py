@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 import concurrent.futures
 import json
 import re
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -20,7 +21,7 @@ INCIDENT = re.compile(r'breach|ransomware|data (?:leak|theft|expos)|stolen|compr
 def now():
     return datetime.now(timezone.utc).isoformat()
 
-def fetch(source):
+def fetch_once(source):
     name, url, hosts = source
     request = urllib.request.Request(url, headers={'User-Agent': 'SafeScale-RSS/1.0 (+https://safescale.in)'})
     with urllib.request.urlopen(request, timeout=25) as response:
@@ -48,6 +49,16 @@ def fetch(source):
     if not items:
         raise ValueError('No valid headlines')
     return items
+
+def fetch(source):
+    for attempt in range(3):
+        try:
+            return fetch_once(source)
+        except Exception:
+            if attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
+
 
 def main():
     previous = json.loads(DEST.read_text()) if DEST.exists() else {'items': [], 'sources': []}

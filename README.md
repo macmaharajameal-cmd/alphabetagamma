@@ -22,3 +22,7 @@ The public feed shows the last refresh attempt, source failures, and a warning a
 No first-party analytics, forms, cookies, or persistent browser storage. Checklists reset on reload. Publisher links open the original publisher. X widgets load only after the visitor clicks “Load X timelines”; X may then process data under its own policies. Content security policies are set per page. Do not insert personal details into the About page without approval.
 
 Keep `docs/CNAME` as `safescale.in`. Keep only the four GitHub Pages apex A records in the DNS zone; do not reconnect GoDaddy WebsiteBuilder DNS.
+
+## Continuous briefing tape
+
+The Home and On X pages show a seamless left-to-right headline tape at 32 CSS pixels per second. Hover, keyboard focus, the Pause button, or a hidden tab pauses it. Reduced-motion preferences start it paused. Read all headlines provides a stationary accessible alternative. Publisher refreshes run every six hours, every day, with three fetch attempts per source. Open pages check for new published data every 15 minutes and when returning to an older tab. Last successful source-refresh time is displayed below the tape; stale briefings are labeled.
