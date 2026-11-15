@@ -120,7 +120,7 @@ function renderNews(data) {
       const article = element('article', 'story');
       const meta = element('div', 'story-meta');
       meta.append(element('span', 'pill', item.source));
-      const time = element('time', '', fmt(item.publishedAt)); time.dateTime = item.publishedAt; meta.append(time);
+      const time = element('time', '', `${item.dateKind || 'Published'} · ${fmt(item.publishedAt)}`); time.dateTime = item.publishedAt; meta.append(time);
       const heading = element('h2');
       const link = element('a', '', item.title); link.href = item.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; heading.append(link);
       const read = element('a', 'read', 'Read original reporting ↗'); read.href = item.url; read.target = '_blank'; read.rel = 'noopener noreferrer';
@@ -167,6 +167,13 @@ if (['news', 'breaches', 'home', 'social'].includes(page)) {
   });
 }
 if (page === 'hunts') {
+  function openLinkedHunt() {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target?.matches('details.hunt')) target.open = true;
+  }
+  openLinkedHunt();
+  window.addEventListener('hashchange', openLinkedHunt);
   document.querySelectorAll('.hunt').forEach(hunt => {
     const boxes = [...hunt.querySelectorAll('input[type=checkbox]')];
     const status = hunt.querySelector('.hunt-status');

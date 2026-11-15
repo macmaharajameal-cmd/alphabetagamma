@@ -2,7 +2,9 @@
 from pathlib import Path
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
+from html.parser import HTMLParser
+from classify_intel import classify
 import concurrent.futures
 import json
 import re
@@ -15,11 +17,40 @@ DEST = ROOT / 'docs/data/news.json'
 SOURCES = [
     ('BleepingComputer', 'https://www.bleepingcomputer.com/feed/', {'www.bleepingcomputer.com', 'bleepingcomputer.com'}),
     ('The Hacker News', 'https://feeds.feedburner.com/TheHackersNews', {'thehackernews.com', 'www.thehackernews.com'}),
+    ('CISA KEV', 'https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json', {'www.cisa.gov'}),
 ]
 INCIDENT = re.compile(r'breach|ransomware|data (?:leak|theft|expos)|stolen|compromis|cyberattack|cyber.attack|extortion|hackers (?:steal|leak)|security incident', re.I)
 
 def now():
     return datetime.now(timezone.utc).isoformat()
+
+class FeedText(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.parts = []; self.skip = 0
+    def handle_starttag(self, tag, attrs):
+        if tag in ('script', 'style'): self.skip += 1
+    def handle_endtag(self, tag):
+        if tag in ('script', 'style'): self.skip = max(0, self.skip - 1)
+    def handle_data(self, data):
+        if not self.skip: self.parts.append(data)
+
+def context_text(raw):
+    parser = FeedText(); parser.feed(raw[:30000])
+    return ' '.join(' '.join(parser.parts).split())[:8000]
+
+def kev_items(body):
+    catalog = json.loads(body)
+    entries = sorted(catalog['vulnerabilities'], key=lambda row: row['dateAdded'], reverse=True)[:50]
+    items = []
+    for row in entries:
+        title = row['cveID'] + ' · ' + row['vulnerabilityName']
+        link = 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog?' + urlencode({'search_api_fulltext':row['cveID']})
+        date = datetime.strptime(row['dateAdded'], '%Y-%m-%d').replace(tzinfo=timezone.utc).isoformat()
+        context = row.get('shortDescription', '')
+        items.append({'title':title, 'url':link, 'publishedAt':date, 'dateKind':'Added to CISA KEV', 'source':'CISA KEV', 'incident':False,
+                      'intel':classify(title, context, 'CISA KEV'), 'cve':row['cveID'], 'requiredAction':row.get('requiredAction',''),
+                      'catalogDueDate':row.get('dueDate'), 'ransomwareUse':row.get('knownRansomwareCampaignUse','Unknown')})
+    return items
 
 def fetch_once(source):
     name, url, hosts = source
@@ -28,6 +59,8 @@ def fetch_once(source):
         body = response.read(3_000_001)
     if len(body) > 3_000_000:
         raise ValueError('Feed exceeds size limit')
+    if name == 'CISA KEV':
+        return kev_items(body)
     if b'<!ENTITY' in body.upper() or b'<!DOCTYPE' in body.upper():
         raise ValueError('Unsupported XML declarations')
     root = ET.fromstring(body)
@@ -45,7 +78,8 @@ def fetch_once(source):
             published = published.astimezone(timezone.utc).isoformat()
         except (ValueError, TypeError, OverflowError):
             continue
-        items.append({'title': title, 'url': link, 'publishedAt': published, 'source': name, 'incident': bool(INCIDENT.search(title))})
+        context = context_text(node.findtext('description') or '')
+        items.append({'title': title, 'url': link, 'publishedAt': published, 'source': name, 'incident': bool(INCIDENT.search(title)), 'intel':classify(title, context, name)})
     if not items:
         raise ValueError('No valid headlines')
     return items
@@ -65,7 +99,7 @@ def main():
     combined = {item['url']: item for item in previous.get('items', [])}
     statuses = []
     success_count = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         futures = [(source, pool.submit(fetch, source)) for source in SOURCES]
         for source, future in futures:
             name, url, _ = source
@@ -80,6 +114,9 @@ def main():
                 statuses.append({'name': name, 'feedUrl': url, 'status': 'unavailable', 'lastSuccessAt': old.get('lastSuccessAt')})
                 print(f'{name}: unavailable ({type(error).__name__}); retained previous headlines')
     items = sorted(combined.values(), key=lambda item: item['publishedAt'], reverse=True)[:240]
+    for item in items:
+        if 'intel' not in item:
+            item['intel'] = classify(item['title'], source=item['source'])
     if not items:
         raise SystemExit('No current or cached headlines; leaving the site unchanged')
     result = {'checkedAt': now(), 'sources': statuses, 'items': items}
