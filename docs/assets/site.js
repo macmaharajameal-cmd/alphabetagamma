@@ -4,8 +4,40 @@ const fmt = value => {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? 'Date unavailable' : date.toLocaleString(undefined, {dateStyle: 'medium', timeStyle: 'short'});
 };
-function safeLink(value) {
-  try { const url = new URL(value); return url.protocol === 'https:' ? url.href : null; } catch { return null; }
+const FEED_SOURCE_HOSTS = Object.freeze({
+  'BleepingComputer': ['www.bleepingcomputer.com', 'bleepingcomputer.com'],
+  'The Hacker News': ['thehackernews.com', 'www.thehackernews.com'],
+  'CISA KEV': ['www.cisa.gov']
+});
+function safeLink(value, source) {
+  if (typeof value !== 'string' || typeof source !== 'string' || value.length > 2048 || !Object.hasOwn(FEED_SOURCE_HOSTS, source)) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && !url.username && !url.password && !url.port && FEED_SOURCE_HOSTS[source].includes(url.hostname) ? url.href : null;
+  } catch { return null; }
+}
+function feedText(value, maximum = 500) { return typeof value === 'string' ? value.slice(0, maximum) : ''; }
+function normalizeFeed(data) {
+  if (!data || !Array.isArray(data.items) || typeof data.checkedAt !== 'string' || !Number.isFinite(Date.parse(data.checkedAt))) throw new Error('Invalid feed');
+  const allowed = {
+    sectors: ['retail', 'hospitality', 'manufacturing', 'saas'],
+    environments: ['m365', 'aws', 'azure', 'windows', 'payments', 'web', 'ot'],
+    regions: ['india', 'global'], topics: ['identity', 'ransomware', 'vulnerability', 'data', 'supply-chain']
+  };
+  const items = data.items.slice(0, 240).flatMap(item => {
+    if (!item || !safeLink(item.url, item.source) || typeof item.title !== 'string' || !item.title.trim() || typeof item.publishedAt !== 'string' || !Number.isFinite(Date.parse(item.publishedAt))) return [];
+    const raw = item.intel && typeof item.intel === 'object' ? item.intel : {};
+    const intel = {version: feedText(raw.version, 40), basis: feedText(raw.basis, 100), scope: feedText(raw.scope, 1000), startupRelevant: raw.startupRelevant === true, startupReason: feedText(raw.startupReason, 1000)};
+    Object.entries(allowed).forEach(([key, ids]) => {
+      intel[key] = (Array.isArray(raw[key]) ? raw[key] : []).slice(0, ids.length).filter(t => t && ids.includes(t.id) && typeof t.label === 'string').map(t => ({id: t.id, label: feedText(t.label, 100), confidence: feedText(t.confidence, 100), evidence: (Array.isArray(t.evidence) ? t.evidence : []).filter(v => typeof v === 'string').slice(0, 3).map(v => feedText(v, 100))}));
+    });
+    intel.hunts = (Array.isArray(raw.hunts) ? raw.hunts : []).slice(0, 4).filter(h => h && ['identity', 'powershell', 'persistence', 'oauth'].includes(h.id)).map(h => ({id: h.id, title: feedText(h.title, 150), requires: feedText(h.requires, 500)}));
+    const clean = {title: feedText(item.title), source: item.source, url: safeLink(item.url, item.source), publishedAt: item.publishedAt, incident: item.incident === true, intel};
+    ['dateKind', 'requiredAction', 'ransomwareUse', 'catalogDueDate', 'cve'].forEach(key => { clean[key] = feedText(item[key], 2000); });
+    return [clean];
+  });
+  const sources = (Array.isArray(data.sources) ? data.sources : []).slice(0, 3).filter(s => s && Object.hasOwn(FEED_SOURCE_HOSTS, s.name)).map(s => ({name: s.name, status: s.status === 'ok' ? 'ok' : 'unavailable', lastSuccessAt: feedText(s.lastSuccessAt, 80)}));
+  return {checkedAt: data.checkedAt, sources, items};
 }
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -14,12 +46,25 @@ function element(tag, className, text) {
   return node;
 }
 async function loadFeed() {
-  const response = await fetch('data/news.json', {cache: 'no-cache'});
-  if (!response.ok) throw new Error('Could not fetch headlines');
-  const data = await response.json();
-  if (!Array.isArray(data.items)) throw new Error('Invalid feed');
-  data.items = data.items.filter(item => item && typeof item.title === 'string' && safeLink(item.url));
-  return data;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  try {
+    const response = await fetch('data/news.json', {cache: 'no-cache', signal: controller.signal});
+    if (!response.ok) throw new Error('Could not fetch headlines');
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8', {fatal: true});
+    let bytes = 0, text = '';
+    try {
+      while (true) {
+        const {done, value} = await reader.read();
+        if (done) break;
+        bytes += value.byteLength;
+        if (bytes > 4000000) { await reader.cancel(); throw new Error('Feed exceeds size limit'); }
+        text += decoder.decode(value, {stream: true});
+      }
+    } finally { reader.releaseLock(); }
+    return normalizeFeed(JSON.parse(text + decoder.decode()));
+  } finally { clearTimeout(timeout); }
 }
 let tickerCleanup = () => {};
 function renderTicker(data) {
@@ -197,15 +242,17 @@ if (page === 'social') {
     e.currentTarget.disabled = true; e.currentTarget.textContent = 'Timelines requested';
     const status = document.getElementById('x-status');
     status.textContent = 'Loading from X… If no posts appear, open the account links below.';
+    const accounts = new Set(['CISAgov', 'MsftSecIntel', 'Unit42_Intel']);
     document.querySelectorAll('.x-slot').forEach(slot => {
-      const link = element('a', 'twitter-timeline', `Posts from ${slot.dataset.name}`);
-      link.href = `https://twitter.com/${slot.dataset.handle}`;
-      link.dataset.theme = 'dark'; link.dataset.height = '540'; link.dataset.dnt = 'true';
-      link.target = '_blank'; link.rel = 'noopener noreferrer'; slot.append(link);
+      if (!accounts.has(slot.dataset.handle)) return;
+      const frame = document.createElement('iframe');
+      frame.title = `X timeline: ${slot.dataset.name}`;
+      frame.src = `https://syndication.twitter.com/srv/timeline-profile/screen-name/${slot.dataset.handle}`;
+      frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
+      frame.referrerPolicy = 'no-referrer';
+      frame.loading = 'lazy';
+      slot.append(frame);
     });
-    const script = document.createElement('script'); script.src = 'https://platform.twitter.com/widgets.js'; script.async = true;
-    script.onload = () => { status.textContent = 'X widget loaded. If posts are unavailable or sign-in is required, use the account links below.'; };
-    script.onerror = () => { status.textContent = 'X could not load here. Please use the account links below.'; };
-    document.head.append(script);
+    status.textContent = 'Timelines requested in isolated X frames. If posts are unavailable or sign-in is required, use the account links below.';
   });
 }

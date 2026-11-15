@@ -5,6 +5,7 @@ from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse, urlencode
 from html.parser import HTMLParser
 from classify_intel import classify
+from validate_news import validate_news, valid_source_url
 import concurrent.futures
 import json
 import re
@@ -52,24 +53,48 @@ def kev_items(body):
                       'catalogDueDate':row.get('dueDate'), 'ransomwareUse':row.get('knownRansomwareCampaignUse','Unknown')})
     return items
 
+class NoDTDTreeBuilder(ET.TreeBuilder):
+    def doctype(self, *args):
+        raise ValueError('DTD declarations are forbidden')
+
+
+def parse_feed_xml(body):
+    # A parser-level rule also rejects UTF-16/UTF-32 declaration bypasses.
+    return ET.fromstring(body, parser=ET.XMLParser(target=NoDTDTreeBuilder()))
+
+
+class SourceRedirects(urllib.request.HTTPRedirectHandler):
+    def __init__(self, hosts):
+        super().__init__()
+        self.hosts = hosts
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        parsed = urlparse(newurl)
+        if parsed.scheme != 'https' or parsed.hostname not in self.hosts or parsed.username or parsed.password or parsed.port not in (None, 443):
+            raise ValueError('Redirect outside the approved HTTPS source')
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def fetch_once(source):
     name, url, hosts = source
     request = urllib.request.Request(url, headers={'User-Agent': 'SafeScale-RSS/1.0 (+https://safescale.in)'})
-    with urllib.request.urlopen(request, timeout=25) as response:
+    network_hosts = {urlparse(url).hostname}
+    if name == 'BleepingComputer':
+        network_hosts.update({'www.bleepingcomputer.com', 'bleepingcomputer.com'})
+    opener = urllib.request.build_opener(SourceRedirects(network_hosts))
+    with opener.open(request, timeout=25) as response:
         body = response.read(3_000_001)
     if len(body) > 3_000_000:
         raise ValueError('Feed exceeds size limit')
     if name == 'CISA KEV':
         return kev_items(body)
-    if b'<!ENTITY' in body.upper() or b'<!DOCTYPE' in body.upper():
-        raise ValueError('Unsupported XML declarations')
-    root = ET.fromstring(body)
+    root = parse_feed_xml(body)
     items = []
     for node in root.findall('.//item'):
         title = ' '.join((node.findtext('title') or '').split())[:500]
         link = (node.findtext('link') or '').strip()
         parsed = urlparse(link)
-        if not title or parsed.scheme != 'https' or parsed.hostname not in hosts:
+        if not title or not valid_source_url(link, name):
             continue
         try:
             published = parsedate_to_datetime(node.findtext('pubDate') or '')
@@ -121,7 +146,10 @@ def main():
         raise SystemExit('No current or cached headlines; leaving the site unchanged')
     result = {'checkedAt': now(), 'sources': statuses, 'items': items}
     DEST.parent.mkdir(parents=True, exist_ok=True)
-    DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+    validate_news(result)
+    temporary = DEST.with_suffix('.tmp')
+    temporary.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+    temporary.replace(DEST)
     print(f'Saved {len(items)} headlines ({sum(i["incident"] for i in items)} incident-related); {success_count} sources refreshed')
 
 if __name__ == '__main__':

@@ -9,32 +9,67 @@ on:
       - 'scripts/**'
       - '.github/workflows/refresh-news.yml'
 permissions:
-  contents: write
-  pages: write
+  contents: read
 concurrency:
   group: refresh-cyber-headlines
   cancel-in-progress: false
 jobs:
-  refresh:
+  collect:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          ref: main
-      - uses: actions/setup-python@v5
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
-      - name: Check classification regressions
+      - name: Run classification and feed security regressions
         run: python -m unittest discover -s scripts -p 'test_*.py'
-      - name: Fetch publisher headlines
-        run: python scripts/refresh_news.py
+      - name: Fetch and validate publisher data without write credentials
+        run: |
+          python scripts/refresh_news.py
+          python scripts/validate_news.py docs/data/news.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: validated-news
+          path: docs/data/news.json
+          retention-days: 1
+          if-no-files-found: error
+  publish:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: validated-news
+          path: ${{ runner.temp }}/briefing-data
+      - name: Revalidate data before committing the single allowed file
+        run: |
+          python scripts/validate_news.py "$RUNNER_TEMP/briefing-data/news.json"
+          cp "$RUNNER_TEMP/briefing-data/news.json" docs/data/news.json
+      - name: Enforce HTTPS for the custom domain
+        id: https
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh api --method PUT "repos/$GH_REPO/pages" -F https_enforced=true --silent
       - name: Save updated headlines
         id: save
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/data/news.json
+          git add -- docs/data/news.json
           if git diff --cached --quiet; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
           else
@@ -42,10 +77,9 @@ jobs:
             git push origin HEAD:main
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           fi
-      # Commits made with GITHUB_TOKEN do not automatically start Pages builds.
       - name: Request GitHub Pages rebuild
         if: steps.save.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh api --method POST "repos/$GH_REPO/pages/builds"
+        run: gh api --method POST "repos/$GH_REPO/pages/builds" --silent

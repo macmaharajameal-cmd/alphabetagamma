@@ -19,7 +19,7 @@ The public feed shows the last refresh attempt, source failures, and a warning a
 
 ## Privacy
 
-No first-party analytics, forms, cookies, or persistent browser storage. Checklists reset on reload. Publisher links open the original publisher. X widgets load only after the visitor clicks “Load X timelines”; X may then process data under its own policies. Content security policies are set per page. Do not insert personal details into the About page without approval.
+No first-party analytics, forms, cookies, or persistent browser storage. Checklists reset on reload. Publisher links open the original publisher. Sandboxed X timelines load only after the visitor clicks “Load X timelines”; X may then process data under its own policies. Content security policies are set per page. Do not insert personal details into the About page without approval.
 
 Keep `docs/CNAME` as `safescale.in`. Keep only the four GitHub Pages apex A records in the DNS zone; do not reconnect GoDaddy WebsiteBuilder DNS.
 
@@ -36,3 +36,7 @@ Industry mentions are separate from potential business relevance based on a tech
 Sources: BleepingComputer RSS, The Hacker News RSS, and the official CISA KEV JSON mirror at `cisagov/kev-data` (newest 50 catalog entries). KEV dates are catalog additions, not publication or incident dates. U.S. federal catalog deadlines do not apply automatically to Indian businesses. CERT-In is a direct official guidance link; its feeds are not ingested because tested endpoints did not return usable feed data. Canonical publisher URLs are deduplicated within the combined collection; cross-publisher reports of one incident remain distinct and are not counted as unique incidents.
 
 Industry coverage cards explain systems, telemetry, and operational priorities. Hunt links require the named logs and do not assert a technique was used in a source story. Cloud OAuth, identity sign-in, Windows PowerShell, and scheduled-task guides are available; dedicated POS script and industrial protocol queries are not included. Classification is regenerated on each scheduled fetch, with cached classifications retained during source failures. Headlines and classifications refresh together every six hours. Add a rule in `classify_intel.py` to extend taxonomy, and run `python scripts/refresh_news.py` to regenerate data.
+
+## Security maintenance
+
+See [SECURITY.md](SECURITY.md) for the reviewed boundaries, fixed issues, tests, and GitHub Pages header limitations. Feed parsing runs separately from publishing; run `python -m unittest discover -s scripts -p "test_*.py"` before changing the ingestion or classification code. Actions are SHA-pinned and should be reviewed when updating those pins.
