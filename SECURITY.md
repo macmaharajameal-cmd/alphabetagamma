@@ -10,9 +10,9 @@ This review covered the current static pages, browser scripts, feed ingestion/cl
 - **Unexpected redirects:** feed requests cannot redirect to HTTP, another provider, or a private-address hostname. Requests originate only from configured source URLs. This is a redirect-host control, not a general-purpose DNS-rebinding defense.
 - **Publishing permissions:** external feeds are processed in a read-only job without persisted Git credentials. A separate publishing job revalidates a single JSON artifact before committing only `docs/data/news.json`. All official Actions dependencies are pinned to full commit SHAs. No pull-request-target workflow or external API secrets are used.
 
-## Remaining configuration
+## HTTPS enforcement verified
 
-**HTTPS enforcement is not fixed by this code update.** The publishing job's attempt to enable it returned `Resource not accessible by integration` (HTTP 403), despite Pages write permissions. The owner must enable **Settings → Pages → Enforce HTTPS**. Until then, plain HTTP is still served, so an HTTP visitor is exposed to network content modification. The workflow now checks this setting and warns if it remains disabled. Do not treat a client-side JavaScript redirect or meta CSP as a replacement for server-enforced HTTPS.
+The owner enabled **Settings → Pages → Enforce HTTPS** after GitHub approved the certificate for `safescale.in` and `www.safescale.in`. Live checks confirmed `https_enforced: true`, both HTTP hostnames redirect to `https://safescale.in/`, and the HTTPS site returns HTTP 200. The earlier integration-permission issue no longer leaves this setting unresolved. The workflow continues checking enforcement on each refresh.
 
 ## Verification
 
