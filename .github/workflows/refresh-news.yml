@@ -57,13 +57,15 @@ jobs:
         run: |
           python scripts/validate_news.py "$RUNNER_TEMP/briefing-data/news.json"
           cp "$RUNNER_TEMP/briefing-data/news.json" docs/data/news.json
-      - name: Enforce HTTPS for the custom domain
-        id: https
-        continue-on-error: true
+      - name: Check HTTPS enforcement
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh api --method PUT "repos/$GH_REPO/pages" -F https_enforced=true --silent
+        run: |
+          enforced="$(gh api "repos/$GH_REPO/pages" --jq '.https_enforced')"
+          if [ "$enforced" != "true" ]; then
+            echo '::warning::Enable Enforce HTTPS in repository Settings > Pages. The workflow token cannot change this setting.'
+          fi
       - name: Save updated headlines
         id: save
         run: |

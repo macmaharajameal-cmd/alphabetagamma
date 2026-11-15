@@ -9,7 +9,10 @@ This review covered the current static pages, browser scripts, feed ingestion/cl
 - **Feed-origin and malformed-data defenses:** HTTPS publisher URLs are checked against the declared source on both producer and consumer. Credentials, unexpected ports, source mismatches, and foreign origins are rejected. Browser reads are bounded and timed out, nested feed data is normalized, and hunt identifiers are allowlisted. Existing text-node rendering is retained; no feed HTML is executed.
 - **Unexpected redirects:** feed requests cannot redirect to HTTP, another provider, or a private-address hostname. Requests originate only from configured source URLs. This is a redirect-host control, not a general-purpose DNS-rebinding defense.
 - **Publishing permissions:** external feeds are processed in a read-only job without persisted Git credentials. A separate publishing job revalidates a single JSON artifact before committing only `docs/data/news.json`. All official Actions dependencies are pinned to full commit SHAs. No pull-request-target workflow or external API secrets are used.
-- **HTTPS enforcement:** the publishing job requests HTTPS enforcement through GitHub's Pages API. The resulting Pages setting and HTTP redirect must be checked after deployment; failure of that configuration step does not prevent deployment of the independent code fixes.
+
+## Remaining configuration
+
+**HTTPS enforcement is not fixed by this code update.** The publishing job's attempt to enable it returned `Resource not accessible by integration` (HTTP 403), despite Pages write permissions. The owner must enable **Settings → Pages → Enforce HTTPS**. Until then, plain HTTP is still served, so an HTTP visitor is exposed to network content modification. The workflow now checks this setting and warns if it remains disabled. Do not treat a client-side JavaScript redirect or meta CSP as a replacement for server-enforced HTTPS.
 
 ## Verification
 
