@@ -22,7 +22,6 @@ async function loadFeed() {
   return data;
 }
 let tickerCleanup = () => {};
-let tickerUserPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function renderTicker(data) {
   const viewport = document.getElementById('ticker-viewport');
   if (!viewport || !data.items.length) return;
@@ -44,16 +43,13 @@ function renderTicker(data) {
   track.append(group, group.cloneNode(true));
   viewport.replaceChildren(track);
   const wrap = viewport.closest('.ticker-wrap');
-  const pause = document.getElementById('ticker-pause');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let animation, width = 0, duration = 0, index = 0;
   function sync() {
     const temporarilyPaused = document.hidden || wrap.matches(':hover') || wrap.contains(document.activeElement);
     if (animation) {
-      if (tickerUserPaused || temporarilyPaused) animation.pause(); else animation.play();
+      if (reduced.matches || temporarilyPaused) animation.pause(); else animation.play();
     }
-    pause.textContent = tickerUserPaused ? 'Play' : 'Pause';
-    pause.setAttribute('aria-pressed', String(tickerUserPaused));
   }
   function measure() {
     const newWidth = group.getBoundingClientRect().width;
@@ -74,8 +70,7 @@ function renderTicker(data) {
   }
   document.getElementById('ticker-next').addEventListener('click', () => seek(1), options);
   document.getElementById('ticker-prev').addEventListener('click', () => seek(-1), options);
-  pause.addEventListener('click', () => { tickerUserPaused = !tickerUserPaused; sync(); }, options);
-  reduced.addEventListener('change', () => { if (reduced.matches) tickerUserPaused = true; sync(); }, options);
+  reduced.addEventListener('change', sync, options);
   wrap.addEventListener('mouseenter', sync, options); wrap.addEventListener('mouseleave', sync, options);
   wrap.addEventListener('focusin', sync, options);
   wrap.addEventListener('focusout', () => requestAnimationFrame(sync), options);
