@@ -1,26 +1,80 @@
 {
-  "checkedAt": "2026-11-15T18:13:00.576012+00:00",
+  "checkedAt": "2026-11-15T22:57:29.338136+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T18:13:00.342848+00:00"
+      "lastSuccessAt": "2026-11-15T22:57:29.337757+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T18:13:00.575692+00:00"
+      "lastSuccessAt": "2026-11-15T22:57:29.337833+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-15T18:13:00.575732+00:00"
+      "lastSuccessAt": "2026-11-15T22:57:29.337872+00:00"
     }
   ],
   "items": [
+    {
+      "title": "FBI warns ARTEX AI hacking tool is powering global cyberattacks",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks/",
+      "publishedAt": "2026-11-15T18:29:53+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [
+          {
+            "id": "m365",
+            "label": "Microsoft 365 / identity",
+            "evidence": [
+              "Microsoft 365"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "supply-chain",
+            "label": "Software supply chain",
+            "evidence": [
+              "supply-chain"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [
+          {
+            "id": "global",
+            "label": "Global scope explicitly mentioned",
+            "evidence": [
+              "worldwide"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "TSMC employee data breach linked to cloud provider",
       "url": "https://www.bleepingcomputer.com/news/security/tsmc-employee-data-breach-linked-to-cloud-provider/",
