@@ -1,26 +1,500 @@
 {
-  "checkedAt": "2026-11-18T07:41:35.789894+00:00",
+  "checkedAt": "2026-11-18T20:41:26.065407+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-18T07:41:35.556259+00:00"
+      "lastSuccessAt": "2026-11-18T20:41:25.744930+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-18T07:41:35.789572+00:00"
+      "lastSuccessAt": "2026-11-18T20:41:26.065087+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-18T07:41:35.789635+00:00"
+      "lastSuccessAt": "2026-11-18T20:41:26.065119+00:00"
     }
   ],
   "items": [
+    {
+      "title": "Data breach impacts 40 Irish credit unions in reported IT provider hack",
+      "url": "https://www.bleepingcomputer.com/news/security/data-breach-impacts-40-irish-credit-unions-in-reported-it-provider-hack/",
+      "publishedAt": "2026-11-18T19:39:33+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "10-Year-Old NGINX HTTP/2 Flaw Lets Unauthenticated Attackers Execute Code on Servers",
+      "url": "https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html",
+      "publishedAt": "2026-11-18T18:31:17+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-123007"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "F5 Warns 6 Critical BIG-IP Flaws Can Crash Traffic in Specific Setups, May Allow RCE",
+      "url": "https://thehackernews.com/2026/11/f5-warns-6-critical-big-ip-flaws-can.html",
+      "publishedAt": "2026-11-18T18:15:39+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Critical Apache Roller RCE Flaw Under Active Exploitation, No Authentication Required",
+      "url": "https://thehackernews.com/2026/11/critical-apache-roller-rce-flaw-under.html",
+      "publishedAt": "2026-11-18T17:10:45+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploitation",
+              "exploitation",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Microsoft’s Agent Framework PyPI package compromised to steal credentials",
+      "url": "https://www.bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials/",
+      "publishedAt": "2026-11-18T16:58:42+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "credentials"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "supply-chain",
+            "label": "Software supply chain",
+            "evidence": [
+              "PyPI"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "From Deepfakes to Helpdesk Impersonation: Why Stronger Verification Matters",
+      "url": "https://www.bleepingcomputer.com/news/security/from-deepfakes-to-helpdesk-impersonation-why-stronger-verification-matters/",
+      "publishedAt": "2026-11-18T15:00:10+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "identity"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "New EggStreme Malware Variant Goes Silent to Evade Security Tools in Government Attacks",
+      "url": "https://thehackernews.com/2026/11/eggstreme-hackers-rebuild-malware-with.html",
+      "publishedAt": "2026-11-18T14:11:28+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "New Attack Bypasses TPM Lockout to Crack Windows Hello and BitLocker PINs in Days, Not Years",
+      "url": "https://thehackernews.com/2026/11/flash-chip-attack-bypasses-tpm-lockout.html",
+      "publishedAt": "2026-11-18T12:28:30+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [
+          {
+            "id": "windows",
+            "label": "Windows",
+            "evidence": [
+              "Windows"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "AI Pentesting Checklist for Web Apps: 15 Questions to Ask Before Choosing a Vendor",
+      "url": "https://thehackernews.com/2026/11/ai-pentesting-checklist-for-web-apps-15.html",
+      "publishedAt": "2026-11-18T12:15:00+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "Web Apps"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "exploitation",
+              "vulnerabilities",
+              "exploited"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More",
+      "url": "https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html",
+      "publishedAt": "2026-11-18T11:55:49+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-114938"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Dizigom illegal streaming service with 21M monthly visits shuts down",
+      "url": "https://www.bleepingcomputer.com/news/security/dizigom-illegal-streaming-service-with-21m-monthly-visits-shuts-down/",
+      "publishedAt": "2026-11-18T11:50:25+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Quality Isn’t The Main Worry About AI Pentesting — Data Privacy and Production Safety Are",
+      "url": "https://thehackernews.com/2026/11/quality-isnt-main-worry-about-ai.html",
+      "publishedAt": "2026-11-18T11:03:57+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities",
+              "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Apache warns of Roller RCE vulnerability exploited in attacks",
+      "url": "https://www.bleepingcomputer.com/news/security/apache-warns-of-roller-rce-vulnerability-exploited-in-attacks/",
+      "publishedAt": "2026-11-18T10:35:05+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerability",
+              "exploited"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Microsoft announces Windows Server 2028 with hardened security",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-windows-server-2028-with-hardened-security/",
+      "publishedAt": "2026-11-18T09:24:31+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [
+          {
+            "id": "windows",
+            "label": "Windows",
+            "evidence": [
+              "Windows"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Hackers Exploiting Critical Puppet RCE Flaw Affecting Enterprise Management Servers",
+      "url": "https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html",
+      "publishedAt": "2026-11-18T08:24:31+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploited",
+              "Vulnerabilities",
+              "exploitation"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "CISA Urges Immediate Patching of Java4Shell Flaw That Could Allow Remote Code Execution",
+      "url": "https://thehackernews.com/2026/11/cisa-urges-immediate-patching-of.html",
+      "publishedAt": "2026-11-18T08:24:23+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-114938"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "British Scattered Spider hacker sentenced to 6 years in prison",
+      "url": "https://www.bleepingcomputer.com/news/security/british-scattered-spider-hacker-sentenced-to-6-years-in-prison/",
+      "publishedAt": "2026-11-18T08:24:18+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials",
       "url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html",
@@ -76,34 +550,6 @@
             "evidence": [
               "Stolen",
               "Breach"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "Critical Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More",
-      "url": "https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html",
-      "publishedAt": "2026-11-18T04:27:41+00:00",
-      "source": "The Hacker News",
-      "incident": false,
-      "intel": {
-        "version": "rules-1",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-114938"
             ],
             "confidence": "Explicit term match"
           }
