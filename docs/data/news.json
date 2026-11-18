@@ -1,26 +1,192 @@
 {
-  "checkedAt": "2026-11-17T21:04:22.646495+00:00",
+  "checkedAt": "2026-11-18T07:41:35.789894+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-17T21:04:22.221609+00:00"
+      "lastSuccessAt": "2026-11-18T07:41:35.556259+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-17T21:04:22.646166+00:00"
+      "lastSuccessAt": "2026-11-18T07:41:35.789572+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-17T21:04:22.646210+00:00"
+      "lastSuccessAt": "2026-11-18T07:41:35.789635+00:00"
     }
   ],
   "items": [
+    {
+      "title": "Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials",
+      "url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html",
+      "publishedAt": "2026-11-18T06:45:26+00:00",
+      "source": "The Hacker News",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "Credentials",
+              "credential"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "supply-chain",
+            "label": "Software supply chain",
+            "evidence": [
+              "PyPI"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Russian COLD RELIC Hackers Use Stolen Google Workspace Data to Breach Second U.S. Organization",
+      "url": "https://thehackernews.com/2026/11/russian-cold-relic-hackers-use-stolen.html",
+      "publishedAt": "2026-11-18T05:58:04+00:00",
+      "source": "The Hacker News",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "Stolen",
+              "Breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Critical Java4Shell Flaw (CVE-2026-114938) Enables Pre-Auth RCE in Jira, Jenkins, Keycloak and More",
+      "url": "https://thehackernews.com/2026/11/java4shell-cve-2026-114938-enables-pre.html",
+      "publishedAt": "2026-11-18T04:27:41+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-114938"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Critical Java4Shell flaw allows RCE attacks on major Java applications",
+      "url": "https://www.bleepingcomputer.com/news/security/critical-java4shell-flaw-allows-rce-attacks-on-major-java-applications/",
+      "publishedAt": "2026-11-17T23:04:21+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Cloud keys leaked in Docker Hub images are stolen within seconds",
+      "url": "https://www.bleepingcomputer.com/news/security/cloud-keys-leaked-in-docker-hub-images-are-stolen-within-seconds/",
+      "publishedAt": "2026-11-17T21:27:17+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "Credentials"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "exploited"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "stolen"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "Japan takes Fugaku supercomputer offlline after cyberattack",
       "url": "https://www.bleepingcomputer.com/news/security/japan-takes-fugaku-supercomputer-offlline-after-cyberattack/",
@@ -656,6 +822,41 @@
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
+    },
+    {
+      "title": "CVE-2026-115731 · Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-115731",
+      "publishedAt": "2026-11-17T00:00:00+00:00",
+      "dateKind": "Added to CISA KEV",
+      "source": "CISA KEV",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-115731",
+              "Vulnerability",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
+      },
+      "cve": "CVE-2026-115731",
+      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "catalogDueDate": "2026-12-01",
+      "ransomwareUse": "Unknown"
     },
     {
       "title": "Gemini AI agents repeatedly bypassed safeguards to attack real website",
