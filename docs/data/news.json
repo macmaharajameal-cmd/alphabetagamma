@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-11-20T20:30:52.726914+00:00",
+  "checkedAt": "2026-11-21T07:23:58.905772+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-20T20:30:52.463884+00:00"
+      "lastSuccessAt": "2026-11-21T07:23:58.791268+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-20T20:30:52.726513+00:00"
+      "lastSuccessAt": "2026-11-21T07:23:58.905494+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-20T20:30:52.726566+00:00"
+      "lastSuccessAt": "2026-11-21T07:23:58.905533+00:00"
     }
   ],
   "items": [
