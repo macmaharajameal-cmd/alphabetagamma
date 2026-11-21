@@ -1,13 +1,40 @@
 """Explainable classification of publisher headlines and RSS context, without an AI API."""
 import re
 
-VERSION = 'rules-1'
+VERSION = 'rules-2'
 SECTORS = {
  'retail': ('Retail', r'\b(retail(?:er|ers)?|e-commerce|ecommerce|point.of.sale|online stores?|shopping carts?)\b'),
  'hospitality': ('Hospitality', r'\b(hospitality|hotels?|resorts?|hospitality booking|hotel booking|guest reservation)\b'),
  'manufacturing': ('Manufacturing', r'\b(manufactur(?:ing|er|ers)|industrial|factories|factory|semiconductors?|SCADA|programmable logic controller)\b'),
  'saas': ('SaaS / technology', r'\b(SaaS|software.as.a.service|software compan(?:y|ies)|cloud providers?|software supply.chain|developer tools?)\b'),
 }
+SECTORS.update({
+ 'finance': ('Banking / financial services', r'\b(banks?|banking|fintech|financial services|credit unions?|insurers?|insurance companies|brokerages?|stock exchanges?)\b'),
+ 'healthcare': ('Healthcare', r'\b(healthcare|health care|hospitals?|medical|clinics?|patients?|health systems?)\b'),
+ 'education': ('Education', r'\b(education|universit(?:y|ies)|colleges?|school districts?|school systems?|students?|campus)\b'),
+ 'government': ('Government / public sector', r'\b(government|public sector|municipal|federal agenc(?:y|ies)|ministr(?:y|ies)|civil service)\b'),
+ 'telecom': ('Telecommunications', r'\b(telecom(?:munications)?|telcos?|mobile operators?|internet service providers?|ISPs?|5G networks?)\b'),
+ 'transport': ('Transport / logistics', r'\b(airlines?|airports?|aviation|railways?|railroads?|logistics|transportation|shipping compan(?:y|ies)|port authorities)\b'),
+ 'energy': ('Energy / utilities', r'\b(energy sector|oil and gas|electricity|electrical grids?|power grids?|power plants?|power utilities|water utilities)\b'),
+})
+COMPANIES = {
+ 'hospitality': r'\b(Marriott|Hilton|Hyatt|Accor|Booking\.com|Airbnb)\b',
+ 'retail': r'\b(Walmart|Costco|IKEA|Home Depot|Tesco|Carrefour|Flipkart|Myntra|Meesho)\b',
+ 'manufacturing': r'\b(TSMC|Toyota|Tata Motors|Jaguar Land Rover|chipmakers?|automakers?)\b',
+ 'finance': r'\b(JPMorgan|HSBC|ICICI|HDFC|Axis Bank|Kotak|Razorpay|Zerodha|PhonePe|Paytm)\b',
+ 'transport': r'\b(Qantas|Lufthansa|British Airways|Air India|IndiGo|FedEx|Maersk)\b',
+}
+CATEGORY_LABELS = {key:value[0] for key,value in SECTORS.items()} | {'cross-industry':'General / cross-industry'}
+
+def category_tags(title, context, sectors):
+    text = title + ' ' + context
+    categories = [{'id':tag['id'],'label':tag['label'],'method':'keyword','confidence':'Source keyword match','evidence':tag['evidence'],'reason':'Industry wording matched in the available source context.'} for tag in sectors]
+    for key, pattern in COMPANIES.items():
+        match = re.search(pattern, text, re.I)
+        if match and not any(tag['id'] == key for tag in categories):
+            categories.append({'id':key,'label':CATEGORY_LABELS[key],'method':'company','confidence':'Company-based suggestion','evidence':[match.group(0)],'reason':'A named company or business type maps to this category; this does not establish victim industry.'})
+    return categories or [{'id':'cross-industry','label':CATEGORY_LABELS['cross-industry'],'method':'general','confidence':'Industry not established','evidence':[],'reason':'No specific industry is established. Review the affected technology for relevance across sectors.'}]
+
 ENVIRONMENTS = {
  'm365': ('Microsoft 365 / identity', r'\b(Microsoft 365|Office 365|M365|Entra|Azure AD|Exchange Online|SharePoint|Outlook|OneDrive)\b'),
  'aws': ('AWS', r'\b(AWS|Amazon Web Services|Amazon S3|Amazon EC2)\b'),
@@ -56,7 +83,7 @@ def classify(title, context='', source=''):
  if re.search(r'\bPowerShell\b',text,re.I):hunts.append(HUNTS['windows'])
  if re.search(r'\bscheduled tasks?|schtasks\b',text,re.I):hunts.append(HUNTS['persistence'])
  return {'version':VERSION,'basis':'Headline and publisher RSS context' if context else 'Headline only',
-         'sectors':sectors,'environments':env,'topics':topics,'regions':regions,
+         'sectors':sectors,'categories':category_tags(title, context, sectors),'environments':env,'topics':topics,'regions':regions,
          'startupRelevant':startup,'startupReason':'Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.' if startup else '',
          'hunts':[{'id':i,'title':t,'requires':r} for i,t,r in hunts],
          'scope':'Catalog entry: exploitation confirmed by CISA, geography and industry unspecified' if source=='CISA KEV' else 'Tags identify source wording; they do not establish victim industry, location, attribution, or impact.'}

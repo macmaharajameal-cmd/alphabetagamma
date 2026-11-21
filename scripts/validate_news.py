@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 from datetime import datetime
-from classify_intel import SECTORS, ENVIRONMENTS, TOPICS, REGIONS
+from classify_intel import SECTORS, ENVIRONMENTS, TOPICS, REGIONS, CATEGORY_LABELS
 
 MAX_BYTES = 4_000_000
 SOURCE_HOSTS = {
@@ -60,6 +60,25 @@ def validate_news(data):
                     raise ValueError('Invalid classification tag')
                 if not isinstance(tag.get('evidence'), list) or not 1 <= len(tag['evidence']) <= 3 or not all(text(t, 100) for t in tag['evidence']):
                     raise ValueError('Invalid classification evidence')
+        categories = intel.get('categories', [])
+        if not isinstance(categories, list) or len(categories) > len(CATEGORY_LABELS):
+            raise ValueError('Invalid categories')
+        for tag in categories:
+            if not isinstance(tag, dict) or not isinstance(tag.get('id'), str) or tag['id'] not in CATEGORY_LABELS or tag.get('label') != CATEGORY_LABELS[tag['id']]:
+                raise ValueError('Invalid category')
+            if tag.get('method') not in ('keyword', 'company', 'general', 'ai') or not text(tag.get('reason'), 500) or not text(tag.get('confidence'), 100):
+                raise ValueError('Invalid category provenance')
+            if not isinstance(tag.get('evidence'), list) or len(tag['evidence']) > 3 or not all(text(e, 100) for e in tag['evidence']):
+                raise ValueError('Invalid category evidence')
+            if tag['method'] != 'general' and not tag['evidence']:
+                raise ValueError('Missing category evidence')
+        ai = intel.get('ai')
+        if ai is not None:
+            if not isinstance(ai, dict) or not isinstance(ai.get('fingerprint'), str) or not re.fullmatch(r'[a-f0-9]{64}', ai['fingerprint']) or not isinstance(ai.get('suggestions'), list) or len(ai['suggestions']) > 2:
+                raise ValueError('Invalid cached model metadata')
+            for tag in ai['suggestions']:
+                if not isinstance(tag, dict) or not isinstance(tag.get('id'), str) or tag['id'] not in CATEGORY_LABELS or tag.get('method') != 'ai' or not text(tag.get('confidence'),100) or not text(tag.get('reason'),300) or not isinstance(tag.get('evidence'),list) or len(tag['evidence'])!=1 or not text(tag['evidence'][0],100):
+                    raise ValueError('Invalid cached model suggestion')
         hunts = intel.get('hunts')
         if not isinstance(hunts, list) or len(hunts) > 4 or any(not isinstance(h, dict) or h.get('id') not in HUNT_IDS or not text(h.get('title'), 150) or not text(h.get('requires'), 500) for h in hunts):
             raise ValueError('Invalid hunt mapping')

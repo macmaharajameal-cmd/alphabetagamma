@@ -19,7 +19,8 @@ class ClassificationChecks(unittest.TestCase):
 
     def test_hospital_and_indianapolis_are_not_hospitality_or_india(self):
         result = classify('Hospital systems in Indianapolis report ransomware')
-        self.assertEqual(result['sectors'], [])
+        self.assertEqual(tags(result, 'sectors'), {'healthcare'})
+        self.assertNotIn('hospitality', tags(result, 'sectors'))
         self.assertEqual(result['regions'], [])
 
     def test_indian_researcher_does_not_imply_an_industry(self):

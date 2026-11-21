@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse, urlencode
 from html.parser import HTMLParser
-from classify_intel import classify
+from classify_intel import classify, category_tags, VERSION
 from validate_news import validate_news, valid_source_url
 import concurrent.futures
 import json
@@ -131,7 +131,10 @@ def main():
             old = next((s for s in previous.get('sources', []) if s['name'] == name), {})
             try:
                 items = future.result()
-                combined.update({item['url']: item for item in items})
+                for item in items:
+                    cached_ai = combined.get(item['url'], {}).get('intel', {}).get('ai')
+                    if isinstance(cached_ai, dict): item['intel']['ai'] = cached_ai
+                    combined[item['url']] = item
                 statuses.append({'name': name, 'feedUrl': url, 'status': 'ok', 'lastSuccessAt': now()})
                 success_count += 1
                 print(f'{name}: {len(items)} fetched')
@@ -140,8 +143,15 @@ def main():
                 print(f'{name}: unavailable ({type(error).__name__}); retained previous headlines')
     items = sorted(combined.values(), key=lambda item: item['publishedAt'], reverse=True)[:240]
     for item in items:
-        if 'intel' not in item:
-            item['intel'] = classify(item['title'], source=item['source'])
+        old = item.get('intel', {})
+        if old.get('version') != VERSION:
+            fresh = classify(item['title'], source=item['source'])
+            for dimension in ('sectors', 'environments', 'topics', 'regions'):
+                for tag in old.get(dimension, []):
+                    if not any(t['id'] == tag['id'] for t in fresh[dimension]): fresh[dimension].append(tag)
+            fresh['categories'] = category_tags(item['title'], '', fresh['sectors'])
+            if isinstance(old.get('ai'), dict): fresh['ai'] = old['ai']
+            item['intel'] = fresh
     if not items:
         raise SystemExit('No current or cached headlines; leaving the site unchanged')
     result = {'checkedAt': now(), 'sources': statuses, 'items': items}
