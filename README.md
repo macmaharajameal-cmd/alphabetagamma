@@ -46,3 +46,13 @@ See [SECURITY.md](SECURITY.md) for the reviewed boundaries, fixed issues, tests,
 `docs/arcade.html` is a first-party pixel-art game implemented in `assets/arcade.js` and `assets/arcade.css`. Arcade mode lasts 60 active seconds across three waves with five integrity points. Escaped threats and friendly hits cost integrity; misses break the streak. Practice is untimed, slower, and does not lose integrity. Scores and best-this-visit stay in memory and reset on reload; there is no leaderboard service, persistent storage, telemetry, or external asset dependency. Sound uses Web Audio only after a visitor opts in.
 
 Mouse/touch aiming, keyboard reticle controls, and a regular-button target panel are available. Hiding the tab pauses the round. Reduced-motion settings stop target motion and particle effects; newly spawned targets remain visible. Start/restart scrolls the cabinet into view. The existing strict CSP remains unchanged. The game simulates defensive decisions and does not scan or connect to any systems.
+
+## Industry categories
+
+Cyber News and Recent Breaches now have a category/industry selector, counts, shortcut chips, and per-story badges. Business Intel defaults to **Assigned industry category**; the optional broader relevance mode also matches technologies commonly used by a sector. Explicit source-sector matches remain available separately.
+
+The shared taxonomy covers retail, hospitality, manufacturing, SaaS/technology, banking/financial services, healthcare, education, government/public sector, telecommunications, transport/logistics, energy/utilities, and General/cross-industry. Rules examine headlines and current RSS context. Explicit keyword matches and curated company mappings are labeled separately; company lookup is a suggestion, not proof of victim industry. Unclear/general product advisories retain a General/cross-industry category. Counts are multi-label story counts, not unique incidents.
+
+The scheduled workflow currently uses **keyword/company tagging only**. No AI request, model permission, API key, or API billing is enabled in that workflow. `scripts/classify_ai.py` is an optional, unscheduled adapter with quoted-evidence validation and bounded calls; it is not the active classifier. The published `classification.aiStatus` records `disabled`. Any future AI integration must keep model suggestions distinguishable from source evidence and credentials out of the website.
+
+The backend category taxonomy, browser allowlist and static selector options must be updated together when adding a sector. `scripts/test_categories.py` covers industry distinctions, company mapping, rejected model suggestions, and graceful service unavailability; AI tests use mocks only.

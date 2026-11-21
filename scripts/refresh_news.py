@@ -154,7 +154,12 @@ def main():
             item['intel'] = fresh
     if not items:
         raise SystemExit('No current or cached headlines; leaving the site unchanged')
-    result = {'checkedAt': now(), 'sources': statuses, 'items': items}
+    for item in items:
+        item['intel'].pop('ai', None)
+        item['intel']['categories'] = [tag for tag in item['intel']['categories'] if tag['method'] != 'ai']
+        if not item['intel']['categories']:
+            item['intel']['categories'] = category_tags(item['title'], '', item['intel']['sectors'])
+    result = {'checkedAt': now(), 'sources': statuses, 'items': items, 'classification': {'rulesVersion': VERSION, 'aiStatus': 'disabled', 'model': '', 'processedThisRun': 0, 'cachedRecords': 0, 'aiCategorized': 0, 'pending': 0}}
     DEST.parent.mkdir(parents=True, exist_ok=True)
     validate_news(result)
     temporary = DEST.with_suffix('.tmp')

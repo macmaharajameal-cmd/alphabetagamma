@@ -5,6 +5,7 @@ const industryPacks = {
   manufacturing: {name:'Manufacturing', environments:['ot','windows','m365','azure'], covers:'Engineering and Windows endpoints, industrial-system exposure, remote access, and IT/OT identity boundaries.', logs:'EDR process trees, Windows event logs, remote-access records, firewall logs, and passive OT telemetry where available.', priorities:['Review engineering-workstation and remote-access account activity.','Coordinate vendor remediation and evidence collection with OT owners; do not run unplanned active scans.'], guides:['powershell','persistence']},
   saas: {name:'SaaS / technology', environments:['web','aws','azure','m365'], covers:'Cloud and application identities, OAuth grants, developer integrations, software supply chains, and exposed applications.', logs:'Cloud control-plane audit logs, Entra application audits, IdP sign-ins, repository and CI/CD audit logs.', priorities:['Review privileged identities, application permissions, and integration secrets.','Check recent dependency, build pipeline, and deployment changes.'], guides:['oauth','identity']}
 };
+Object.assign(industryPacks, {"finance": {"name": "Banking / financial services", "environments": ["payments", "m365", "web", "windows", "azure", "aws"], "covers": "Customer and staff identities, digital banking and payment applications, privileged access, and vendor integrations.", "logs": "IdP/MFA events, banking-application audit records, payment-service and endpoint telemetry.", "priorities": ["Review privileged and customer-facing access controls.", "Validate integration changes and vendor exposure with their owners."], "guides": ["identity", "oauth"]}, "healthcare": {"name": "Healthcare", "environments": ["m365", "windows", "web", "azure"], "covers": "Clinical applications, patient-data access, hospital endpoints, and third-party support accounts.", "logs": "EHR access audits, identity events, remote-support logs, and endpoint records.", "priorities": ["Review unusual access to sensitive patient records.", "Coordinate containment with clinical service owners to preserve care availability."], "guides": ["identity", "powershell"]}, "education": {"name": "Education", "environments": ["m365", "windows", "web", "azure", "aws"], "covers": "Student/staff identities, learning platforms, campus endpoints, and cloud integrations.", "logs": "SSO/MFA, learning-platform audits, application grants, and EDR process events.", "priorities": ["Review staff and student account recovery and MFA.", "Audit third-party learning and collaboration integrations."], "guides": ["identity", "oauth"]}, "government": {"name": "Government / public sector", "environments": ["m365", "windows", "web", "azure"], "covers": "Public-service applications, administrator accounts, endpoints, and privileged changes.", "logs": "Identity audits, public-service access logs, change records, and endpoint events.", "priorities": ["Review exposed public-service systems and privileged access.", "Confirm incident contacts and preserve administrative audit trails."], "guides": ["identity", "persistence"]}, "telecom": {"name": "Telecommunications", "environments": ["m365", "windows", "web", "ot"], "covers": "Network-management identities, support access, vendor integrations, and endpoint security.", "logs": "Network authentication, management-plane changes, remote support, and EDR records.", "priorities": ["Review privileged network-management and vendor access.", "Check management-system exposure with the network operations team."], "guides": ["identity", "persistence"]}, "transport": {"name": "Transport / logistics", "environments": ["m365", "windows", "web", "payments", "aws", "azure"], "covers": "Booking and logistics services, operations endpoints, partner integrations, and payment identities.", "logs": "Booking/logistics application audits, integration changes, identity and endpoint logs.", "priorities": ["Review partner access and service-account activity.", "Coordinate response with operational teams to avoid service disruption."], "guides": ["identity", "persistence"]}, "energy": {"name": "Energy / utilities", "environments": ["ot", "windows", "m365", "azure"], "covers": "Engineering systems, remote vendor access, industrial boundaries, and enterprise identities.", "logs": "Passive OT telemetry, remote-access records, firewall and engineering-workstation logs.", "priorities": ["Review remote engineering access with OT owners.", "Use vendor-approved mitigations and avoid unplanned active testing."], "guides": ["powershell", "identity"]}, "cross-industry": {"name": "General / cross-industry", "environments": ["m365", "windows", "web", "ot", "payments", "azure", "aws"], "covers": "Broad technology vulnerabilities and shared security risks without a specific industry established.", "logs": "Use inventory and vendor guidance to choose relevant identity, application, or endpoint logs.", "priorities": ["Confirm that the affected product and version are in your environment.", "Prioritize actual exposure and corroborating evidence."], "guides": ["identity", "powershell"]}});
 const intelGuides = {
   identity:{name:'Unusual successful sign-ins',requires:'Identity-provider sign-in and MFA logs; starter query uses Sentinel SigninLogs.'},
   powershell:{name:'Suspicious PowerShell',requires:'Windows process telemetry; starter query uses Defender XDR DeviceProcessEvents.'},
@@ -19,12 +20,14 @@ function intelTags(item, dimension) {return (item.intel?.[dimension] || []);}
 function hasIntelTag(item, dimension, id) {return intelTags(item,dimension).some(tag=>tag.id===id);}
 function sharedTechnology(item) {return intelTags(item,'environments').length>0 || intelTags(item,'topics').some(t=>['identity','supply-chain'].includes(t.id));}
 function matchingIndustry(item, id) {
-  return hasIntelTag(item,'sectors',id) || intelTags(item,'environments').some(tag=>industryPacks[id]?.environments.includes(tag.id));
+  return hasIntelTag(item,'categories',id) || hasIntelTag(item,'sectors',id) || intelTags(item,'environments').some(tag=>industryPacks[id]?.environments.includes(tag.id));
 }
 function matchedIntel(item, f) {
-  if (f.industry!=='all') {
+  if(f.industry==='cross-industry' && !hasIntelTag(item,'categories','cross-industry'))return false;
+  if (f.industry!=='all' && f.industry!=='cross-industry') {
+    if(f.mode==='categorized' && !hasIntelTag(item,'categories',f.industry))return false;
     if(f.mode==='mentioned' && !hasIntelTag(item,'sectors',f.industry))return false;
-    if(f.mode!=='mentioned' && !matchingIndustry(item,f.industry))return false;
+    if(['relevant','unclassified'].includes(f.mode) && !matchingIndustry(item,f.industry))return false;
   } else if (f.mode==='mentioned' && !intelTags(item,'sectors').length)return false;
   if(f.mode==='unclassified' && intelTags(item,'sectors').length)return false;
   if(f.region==='india' && !hasIntelTag(item,'regions','india'))return false;
@@ -51,11 +54,13 @@ function intelReason(item,f) {
   const reasons=[];
   if(f.industry!=='all') {
     if(hasIntelTag(item,'sectors',f.industry))reasons.push(`${industryPacks[f.industry].name} wording appears in the source context. This is not confirmation of victim industry.`);
-    else if(f.mode!=='mentioned') reasons.push(`Potential fit for ${industryPacks[f.industry].name.toLowerCase()} teams using the mentioned technology. Confirm it is in your environment.`);
+    else if(['relevant','unclassified'].includes(f.mode) && !hasIntelTag(item,'categories',f.industry)) reasons.push(`Potential fit for ${industryPacks[f.industry].name.toLowerCase()} teams using the mentioned technology. Confirm it is in your environment.`);
   }
   if(f.region==='india-relevant' && !hasIntelTag(item,'regions','india'))reasons.push('India relevance is an assessment of shared technology or identity risk; the source does not establish Indian victims.');
   if(hasIntelTag(item,'regions','india'))reasons.push('India-related wording appears in the source context; check the original report for what that location refers to.');
   if(f.profile==='startup')reasons.push(item.intel.startupReason);
+  const suggested=item.intel.categories.find(t=>t.id===f.industry && ['ai','company'].includes(t.method));
+  if(suggested)reasons.push(`${suggested.method==='ai'?'AI-suggested category':'Company-based category'}: ${suggested.reason} This is a relevance suggestion; it does not establish victim industry.`);
   if(!reasons.length)reasons.push(intelTags(item,'sectors').length?'The source contains industry context. Tags reflect terms, not independently verified attribution.':'Industry is not established by the available source context. Review affected technologies before assigning relevance.');
   return reasons;
 }
@@ -97,9 +102,8 @@ function intelCard(item,f) {
   const heading=element('h2');heading.append(intelLink(item.title,item.url));article.append(heading);
   const tags=element('div','intel-tags');
   const sectors=intelTags(item,'sectors');
-  if(sectors.length)sectors.forEach(tag=>tags.append(element('span','intel-badge',`${tag.label} mentioned`)));
-  else tags.append(element('span','intel-badge unknown','Industry unclassified'));
-  if(f.industry!=='all' && !hasIntelTag(item,'sectors',f.industry) && f.mode!=='mentioned')tags.append(element('span','intel-badge assessment',`Potential ${industryPacks[f.industry].name.toLowerCase()} fit`));
+  item.intel.categories.forEach(tag=>{const badge=element('span','intel-badge'+(['ai','company'].includes(tag.method)?' assessment':tag.method==='general'?' unknown':''),tag.label+(tag.method==='ai'?' · AI':tag.method==='company'?' · company match':tag.method==='keyword'?' · keywords':''));badge.title=tag.confidence+'. '+tag.reason;tags.append(badge);});
+  if(f.industry!=='all' && !hasIntelTag(item,'sectors',f.industry) && ['relevant','unclassified'].includes(f.mode) && !hasIntelTag(item,'categories',f.industry))tags.append(element('span','intel-badge assessment',`Potential ${industryPacks[f.industry].name.toLowerCase()} fit`));
   if(hasIntelTag(item,'regions','india'))tags.append(element('span','intel-badge','India mentioned'));
   else if(f.region==='india-relevant')tags.append(element('span','intel-badge assessment','India relevance · assessment'));
   else tags.append(element('span','intel-badge unknown',intelTags(item,'regions').length?'Global wording present':'Geography not established'));
@@ -124,12 +128,13 @@ function intelCard(item,f) {
     const values=intelTags(item,dimension);
     evidence.append(element('p','',`${label}: ${values.length?values.map(tag=>`${tag.label} — “${tag.evidence.join('”, “')}” (${tag.confidence})`).join('; '):'Unclassified: no explicit term matched.'}`));
   });
+  item.intel.categories.forEach(tag=>evidence.append(element('p','',`${tag.label}: ${tag.method} · ${tag.confidence}. ${tag.reason}${tag.evidence.length?' Evidence: “'+tag.evidence.join('”, “')+'”.':''}`)));
   evidence.append(element('p','subtle',item.intel?.scope || 'Source context does not establish applicability.'));
   details.append(evidence);article.append(details);return article;
 }
 function updateIntelURL(f) {
   const params=new URLSearchParams();
-  Object.entries(f).forEach(([key,value])=>{if(value && value!=='all' && !(key==='mode' && value==='relevant'))params.set(key==='search'?'q':key,value)});
+  Object.entries(f).forEach(([key,value])=>{if(value && value!=='all' && !(key==='mode' && value==='categorized'))params.set(key==='search'?'q':key,value)});
   const query=params.toString();history.replaceState(null,'',location.pathname+(query?'?'+query:''));
 }
 function renderBusinessIntel() {
@@ -150,9 +155,14 @@ function updateIntelFeed(data) {
   document.getElementById('intel-sector-count').textContent=intelItems.filter(i=>intelTags(i,'sectors').length).length;
   document.getElementById('intel-india-count').textContent=intelItems.filter(i=>hasIntelTag(i,'regions','india')).length;
   document.getElementById('intel-kev-count').textContent=intelItems.filter(i=>i.source==='CISA KEV').length;
+  document.getElementById('intel-category-status').textContent=categoryStatus(data);
   const missing=(data.sources || []).filter(s=>s.status!=='ok').map(s=>s.name);
   const stale=Date.now()-Date.parse(data.checkedAt)>12*3600000;
   document.getElementById('intel-status').textContent=`Last refresh attempt: ${fmt(data.checkedAt)}.${stale?' Updates are delayed.':''}${missing.length?' Some sources are unavailable: '+missing.join(', ')+'. Cached items are retained.':''}`;
+  const industrySelected=intelControls.industry.value;
+  intelControls.industry.replaceChildren(new Option('All industries','all'));
+  Object.entries(INDUSTRY_CATEGORIES).forEach(([id,label])=>{const count=intelItems.filter(item=>hasIntelTag(item,'categories',id)).length;intelControls.industry.append(new Option(`${label} (${count} categorized)`,id));});
+  if([...intelControls.industry.options].some(o=>o.value===industrySelected))intelControls.industry.value=industrySelected;
   const selected=intelControls.source.value;
   intelControls.source.replaceChildren(new Option('All sources','all'));
   [...new Set(intelItems.map(i=>i.source))].sort().forEach(name=>intelControls.source.append(new Option(name,name)));
