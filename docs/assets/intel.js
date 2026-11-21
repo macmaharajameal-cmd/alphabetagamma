@@ -157,7 +157,7 @@ function updateIntelFeed(data) {
   document.getElementById('intel-kev-count').textContent=intelItems.filter(i=>i.source==='CISA KEV').length;
   document.getElementById('intel-category-status').textContent=categoryStatus(data);
   const missing=(data.sources || []).filter(s=>s.status!=='ok').map(s=>s.name);
-  const stale=Date.now()-Date.parse(data.checkedAt)>12*3600000;
+  const stale=Date.now()-Date.parse(data.checkedAt)>3*3600000;
   document.getElementById('intel-status').textContent=`Last refresh attempt: ${fmt(data.checkedAt)}.${stale?' Updates are delayed.':''}${missing.length?' Some sources are unavailable: '+missing.join(', ')+'. Cached items are retained.':''}`;
   const industrySelected=intelControls.industry.value;
   intelControls.industry.replaceChildren(new Option('All industries','all'));

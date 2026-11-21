@@ -13,9 +13,9 @@ Public static site hosted by GitHub Pages from `main:/docs`, using the custom do
 
 `python scripts/refresh_news.py` fetches headlines from BleepingComputer and The Hacker News. Only titles, timestamps, attribution, and original links are published. Up to 400 records are kept; previously fetched records survive temporary feed failures. Browser rendering uses text nodes, not feed HTML.
 
-The **Refresh cyber headlines** Actions workflow runs every six hours (GitHub may delay scheduled jobs), on updater changes, and manually through Actions. It commits the generated `docs/data/news.json` and explicitly requests a Pages rebuild because `GITHUB_TOKEN` commits do not trigger one automatically. It needs only the repository-provided token with contents/pages write permission, no external secrets. Public repositories may have schedules disabled by GitHub after 60 days without repository activity; check Actions if updates become stale.
+The **Refresh cyber headlines** Actions workflow runs every hour (GitHub may delay scheduled jobs), on updater changes, and manually through Actions. It commits the generated `docs/data/news.json` and explicitly requests a Pages rebuild because `GITHUB_TOKEN` commits do not trigger one automatically. It needs only the repository-provided token with contents/pages write permission, no external secrets. Public repositories may have schedules disabled by GitHub after 60 days without repository activity; check Actions if updates become stale.
 
-The public feed shows the last refresh attempt, source failures, and a warning after 12 hours without a refresh. Headlines are not live streaming. Each headline retains its publication date.
+The public feed shows the last refresh attempt, source failures, and a warning after 3 hours without a refresh. Headlines are not live streaming. Each headline retains its publication date.
 
 ## Privacy
 
@@ -25,7 +25,7 @@ Keep `docs/CNAME` as `safescale.in`. Keep only the four GitHub Pages apex A reco
 
 ## Continuous briefing tape
 
-The Home and On X pages show a seamless left-to-right headline tape at 32 CSS pixels per second. Hover, keyboard focus, or a hidden tab pauses it. The tape resumes when the pointer and keyboard focus leave it. Reduced-motion preferences keep it stationary. Read all headlines provides a stationary accessible alternative. Publisher refreshes run every six hours, every day, with three fetch attempts per source. Open pages check for new published data every 15 minutes and when returning to an older tab. Last successful source-refresh time is displayed below the tape; stale briefings are labeled.
+The Home and On X pages show a seamless left-to-right headline tape at 32 CSS pixels per second. Hover, keyboard focus, or a hidden tab pauses it. The tape resumes when the pointer and keyboard focus leave it. Reduced-motion preferences keep it stationary. Read all headlines provides a stationary accessible alternative. Publisher refreshes run every hour, every day, with three fetch attempts per source. Open pages check for new published data every 15 minutes and when returning to an older tab. Last successful source-refresh time is displayed below the tape; stale briefings are labeled.
 
 ## Business intelligence
 
@@ -35,7 +35,7 @@ Industry mentions are separate from potential business relevance based on a tech
 
 Sources: BleepingComputer RSS, The Hacker News RSS, and the official CISA KEV JSON mirror at `cisagov/kev-data` (newest 50 catalog entries). KEV dates are catalog additions, not publication or incident dates. U.S. federal catalog deadlines do not apply automatically to Indian businesses. CERT-In is a direct official guidance link; its feeds are not ingested because tested endpoints did not return usable feed data. Canonical publisher URLs are deduplicated within the combined collection; cross-publisher reports of one incident remain distinct and are not counted as unique incidents.
 
-Industry coverage cards explain systems, telemetry, and operational priorities. Hunt links require the named logs and do not assert a technique was used in a source story. Cloud OAuth, identity sign-in, Windows PowerShell, and scheduled-task guides are available; dedicated POS script and industrial protocol queries are not included. Classification is regenerated on each scheduled fetch, with cached classifications retained during source failures. Headlines and classifications refresh together every six hours. Add a rule in `classify_intel.py` to extend taxonomy, and run `python scripts/refresh_news.py` to regenerate data.
+Industry coverage cards explain systems, telemetry, and operational priorities. Hunt links require the named logs and do not assert a technique was used in a source story. Cloud OAuth, identity sign-in, Windows PowerShell, and scheduled-task guides are available; dedicated POS script and industrial protocol queries are not included. Classification is regenerated on each scheduled fetch, with cached classifications retained during source failures. Headlines and classifications refresh together every hour. Add a rule in `classify_intel.py` to extend taxonomy, and run `python scripts/refresh_news.py` to regenerate data.
 
 ## Security maintenance
 

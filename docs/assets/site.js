@@ -136,8 +136,8 @@ function renderTicker(data) {
   measure();
   const updated = document.getElementById('ticker-updated');
   const latestSuccess = Math.max(...(data.sources || []).map(source => Date.parse(source.lastSuccessAt) || 0));
-  const stale = !latestSuccess || Date.now() - latestSuccess > 12 * 3600000;
-  updated.textContent = `Updated ${fmt(latestSuccess || data.checkedAt)} · Automatic refresh every 6 hours${stale ? ' · Updates delayed; check the original publishers' : ''}`;
+  const stale = !latestSuccess || Date.now() - latestSuccess > 3 * 3600000;
+  updated.textContent = `Updated ${fmt(latestSuccess || data.checkedAt)} · Automatic refresh every hour${stale ? ' · Updates delayed; check the original publishers' : ''}`;
   tickerCleanup = () => { abort.abort(); observer.disconnect(); if (animation) animation.cancel(); };
 }
 function categoryStatus(data) {
@@ -172,7 +172,7 @@ function renderNews(data) {
   }
   function updateStatus(data) {
     const lastCheck = Date.parse(data.checkedAt);
-    const old = !Number.isFinite(lastCheck) || Date.now() - lastCheck > 12 * 3600000;
+    const old = !Number.isFinite(lastCheck) || Date.now() - lastCheck > 3 * 3600000;
     feedStatus.textContent = `Last refresh attempt: ${fmt(data.checkedAt)}.${old ? ' Updates are delayed; check publisher sites for newer reporting.' : ''}`;
     const failures = (data.sources || []).filter(s => s.status !== 'ok');
     if (failures.length) feedStatus.textContent += ` Unavailable on last attempt: ${failures.map(s => s.name).join(', ')}. Previously fetched headlines are retained.`;
