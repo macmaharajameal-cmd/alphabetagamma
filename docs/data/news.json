@@ -1,26 +1,251 @@
 {
-  "checkedAt": "2026-11-21T07:23:58.905772+00:00",
+  "checkedAt": "2026-11-21T19:27:53.169850+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T07:23:58.791268+00:00"
+      "lastSuccessAt": "2026-11-21T19:27:52.928495+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T07:23:58.905494+00:00"
+      "lastSuccessAt": "2026-11-21T19:27:53.169170+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T07:23:58.905533+00:00"
+      "lastSuccessAt": "2026-11-21T19:27:53.169231+00:00"
     }
   ],
   "items": [
+    {
+      "title": "Microsoft Entra Connect Health flaw exploited to steal tenant data",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
+      "publishedAt": "2026-11-21T18:01:58+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [
+          {
+            "id": "m365",
+            "label": "Microsoft 365 / identity",
+            "evidence": [
+              "Entra"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "azure",
+            "label": "Azure",
+            "evidence": [
+              "Entra"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "exploited",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "BADBOX botnet returns with record-breaking 40 billion daily ad requests",
+      "url": "https://www.bleepingcomputer.com/news/security/badbox-30-botnet-returns-with-record-breaking-40-billion-daily-ad-requests/",
+      "publishedAt": "2026-11-21T15:17:27+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "FBI reportedly hacked again, this time targeting nationwide police database",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-reportedly-hacked-again-this-time-targeting-nationwide-police-database/",
+      "publishedAt": "2026-11-21T14:26:04+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "A Single Malicious Webpage Let Researchers Hijack Meta Muse and Access Private Chats",
+      "url": "https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html",
+      "publishedAt": "2026-11-21T11:53:07+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "credentials"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys",
+      "url": "https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html",
+      "publishedAt": "2026-11-21T11:05:53+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-129975"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access",
+      "url": "https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html",
+      "publishedAt": "2026-11-21T11:03:17+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Zero-Day"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Signal Blocks AI Agents From Reading Private Chats via Screenshots on Android and iOS",
+      "url": "https://thehackernews.com/2026/11/signal-blocks-ai-agents-from-reading.html",
+      "publishedAt": "2026-11-21T08:49:20+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Hackers Exploit Critical VMware, Cisco, and Apache Flaws as Espionage Attacks Emerge",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-vmware-cisco.html",
+      "publishedAt": "2026-11-21T08:49:13+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-1",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploit",
+              "Exploited",
+              "Vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
       "url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
