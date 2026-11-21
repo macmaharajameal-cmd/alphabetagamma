@@ -25,3 +25,11 @@ No credentials matched the high-confidence private-key/token patterns checked in
 GitHub Pages controls HTTP response headers. This site cannot set its own `frame-ancestors`, HSTS, Permissions-Policy, or `X-Content-Type-Options` response headers with HTML meta tags or a `_headers` file. The per-page meta CSP constrains scripts and resources, but cannot enforce `frame-ancestors`. Header-level controls require a hosting provider or edge proxy that supports them. Do not add sensitive authenticated actions without revisiting that boundary.
 
 X controls embedded content and availability inside its isolated frames. Publisher content can still be wrong or misleading; source matching and classification tags are not independent verification of reports.
+
+## Defender Prompt Desk boundary
+
+The prompt library is a first-party text generator, not a model client or data-upload feature. Its page uses `connect-src 'none'`; template titles/summaries are static HTML and the curated template content is loaded from a local script. The builder accepts generic dropdown selections and exposes a read-only preview. It requests no logs, files, case notes, credentials, or organization identifiers. Search terms, selections, and draft text stay in the current page's memory; no persistent browser storage is used.
+
+Copying requires an explicit visitor click. Share links include only a known template ID, never context selections or draft text. Unknown hashes are ignored, and preview text is assigned as a textarea value rather than interpreted as HTML. Browser checks covered all 20 templates, Copilot/Claude formatting, clipboard success/failure, template-only sharing, modal keyboard/focus behavior, malformed hash/search input, and desktop/phone layouts. The page made no external requests during customization and copying.
+
+These templates are not an automatic redaction or secret-detection service. Users must follow approved AI/data policies and review any material they add in a separate tool. Prompt instructions are guidance, not a security guarantee about another AI service or its outputs.
