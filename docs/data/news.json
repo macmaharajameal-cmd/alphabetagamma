@@ -1,23 +1,65 @@
 {
-  "checkedAt": "2026-11-21T20:25:43.321343+00:00",
+  "checkedAt": "2026-11-21T20:26:51.629940+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T20:25:43.320789+00:00"
+      "lastSuccessAt": "2026-11-21T20:26:50.448539+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T20:25:43.320869+00:00"
+      "lastSuccessAt": "2026-11-21T20:26:50.612072+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-21T20:25:43.320929+00:00"
+      "lastSuccessAt": "2026-11-21T20:26:50.612134+00:00"
+    },
+    {
+      "name": "Krebs on Security",
+      "feedUrl": "https://krebsonsecurity.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:50.612157+00:00"
+    },
+    {
+      "name": "SecurityWeek",
+      "feedUrl": "https://www.securityweek.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:50.650590+00:00"
+    },
+    {
+      "name": "SANS Internet Storm Center",
+      "feedUrl": "https://isc.sans.edu/rssfeed_full.xml",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:50.809107+00:00"
+    },
+    {
+      "name": "Unit 42",
+      "feedUrl": "https://unit42.paloaltonetworks.com/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:50.825124+00:00"
+    },
+    {
+      "name": "Microsoft Security",
+      "feedUrl": "https://www.microsoft.com/en-us/security/blog/feed/",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:51.491827+00:00"
+    },
+    {
+      "name": "CERT-EU",
+      "feedUrl": "https://cert.europa.eu/publications/security-advisories-rss",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:51.628979+00:00"
+    },
+    {
+      "name": "The Record",
+      "feedUrl": "https://therecord.media/feed",
+      "status": "ok",
+      "lastSuccessAt": "2026-11-21T20:26:51.629002+00:00"
     }
   ],
   "items": [
@@ -136,6 +178,57 @@
         ],
         "environments": [],
         "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Amazon: China-Linked Hackers’ AI Agents Exploited Medical Software Zero-Day",
+      "url": "https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/",
+      "publishedAt": "2026-11-21T12:08:50+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "evidence": [
+              "Medical"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "Medical"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploited",
+              "Zero-Day",
+              "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
@@ -358,6 +451,199 @@
       }
     },
     {
+      "title": "CTO of ‘RansomwareHelp’ Indicted for Wire Fraud",
+      "url": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+      "publishedAt": "2026-11-21T00:36:39+00:00",
+      "source": "Krebs on Security",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "ransomware"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Dialing for Data: Inside the Com’s High-Profile Heists",
+      "url": "https://unit42.paloaltonetworks.com/com-affiliate-vishing-attacks/",
+      "publishedAt": "2026-11-20T22:00:25+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "evidence": [
+              "healthcare"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "healthcare"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "extortion"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "data theft"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "West Virginia Legislature hit with cyber incident affecting IT systems",
+      "url": "https://therecord.media/west-virginia-legislature-cyberattack",
+      "publishedAt": "2026-11-20T21:34:36+00:00",
+      "source": "The Record",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "government",
+            "label": "Government / public sector",
+            "evidence": [
+              "government"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "government",
+            "label": "Government / public sector",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "government"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "US companies’ use of Chinese open weight AI draws rebuke from House chairmen",
+      "url": "https://therecord.media/chinese-open-weight-AI-use-by-US-companies-house-investigation",
+      "publishedAt": "2026-11-20T20:25:00+00:00",
+      "source": "The Record",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Container Store restores systems after cyberattack",
+      "url": "https://therecord.media/container-store-restores-systems-cyberattack",
+      "publishedAt": "2026-11-20T19:32:00+00:00",
+      "source": "The Record",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
       "url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
       "publishedAt": "2026-11-20T18:51:43+00:00",
@@ -488,6 +774,86 @@
       }
     },
     {
+      "title": "Amazon says Chinese hackers used Cairn AI tool to discover apparent zero-day during attack on university",
+      "url": "https://therecord.media/amazon-research-cairn-ai-university-attacks-possible-zero-day",
+      "publishedAt": "2026-11-20T17:30:00+00:00",
+      "source": "The Record",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "education",
+            "label": "Education",
+            "evidence": [
+              "university",
+              "universities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "education",
+            "label": "Education",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "university",
+              "universities"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "zero-day"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Microsoft named a Leader in the 2026 Gartner® Magic Quadrant™ for SIEM",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/20/microsoft-named-a-leader-in-the-2026-gartner-magic-quadrant-for-siem/",
+      "publishedAt": "2026-11-20T17:00:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control",
       "url": "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html",
       "publishedAt": "2026-11-20T16:58:16+00:00",
@@ -532,6 +898,74 @@
         "regions": [],
         "startupRelevant": true,
         "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "NSA resumes normal operations following internal network disruptions",
+      "url": "https://therecord.media/nsa-resumes-normal-operations-following-internal-disruptions",
+      "publishedAt": "2026-11-20T16:06:00+00:00",
+      "source": "The Record",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "WhatsApp Fixes Flaw Uncovered While Disrupting Scam Campaign",
+      "url": "https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/",
+      "publishedAt": "2026-11-20T16:01:02+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-23871",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
@@ -615,6 +1049,44 @@
       }
     },
     {
+      "title": "In Other News: Norwegian Energy Firm Cyberattacks, Supercomputer Hack, New Nightmare Eclipse Exploit",
+      "url": "https://www.securityweek.com/in-other-news-norwegian-energy-firm-cyberattacks-supercomputer-hack-new-nightmare-eclipse-exploit/",
+      "publishedAt": "2026-11-20T14:56:23+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "N-able says recent security breach led to major service outage",
       "url": "https://www.bleepingcomputer.com/news/microsoft/n-able-says-recent-security-breach-led-to-major-service-outage/",
       "publishedAt": "2026-11-20T13:18:36+00:00",
@@ -655,6 +1127,35 @@
             "confidence": "Explicit term match"
           }
         ],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Industry Reactions to Major Outages and AI Patching Debate: Feedback Friday",
+      "url": "https://www.securityweek.com/industry-reactions-to-major-outages-and-ai-patching-questions-feedback-friday/",
+      "publishedAt": "2026-11-20T12:38:55+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
         "startupRelevant": false,
         "startupReason": "",
         "hunts": [],
@@ -767,6 +1268,57 @@
       }
     },
     {
+      "title": "SBC Medical Group Data Breach Impacts Over 2 Million",
+      "url": "https://www.securityweek.com/sbc-medical-group-data-breach-impacts-over-2-million/",
+      "publishedAt": "2026-11-20T11:36:51+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "evidence": [
+              "Medical",
+              "clinics"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "Medical",
+              "clinics"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "Breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "F5 releases emergency patches for critical BIG-IP RCE flaws",
       "url": "https://www.bleepingcomputer.com/news/security/f5-releases-emergency-patches-for-critical-big-ip-rce-flaws/",
       "publishedAt": "2026-11-20T10:57:43+00:00",
@@ -806,6 +1358,44 @@
       }
     },
     {
+      "title": "European Commission Confirms AI-Assisted Cyberattack Disrupted Services",
+      "url": "https://www.securityweek.com/european-commission-confirms-ai-assisted-cyberattack-disrupted-services/",
+      "publishedAt": "2026-11-20T10:51:42+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "SonicWall Warns Gen 6 Firewalls Won't Get Security Patches, Even for Critical Flaws",
       "url": "https://thehackernews.com/2026/11/sonicwall-warns-gen-6-firewalls-wont.html",
       "publishedAt": "2026-11-20T10:38:22+00:00",
@@ -832,6 +1422,45 @@
             "label": "Vulnerability / exploitation",
             "evidence": [
               "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Ruby Patches Ruby2Shell Vulnerability That Could Lead to RCE",
+      "url": "https://www.securityweek.com/ruby-patches-ruby2shell-vulnerability-that-could-lead-to-rce/",
+      "publishedAt": "2026-11-20T10:34:10+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "CVE-2026-132825"
             ],
             "confidence": "Explicit term match"
           }
@@ -971,6 +1600,92 @@
       }
     },
     {
+      "title": "N-able Blames Service Disruption on Cyberattack",
+      "url": "https://www.securityweek.com/n-able-blames-service-disruption-on-cyberattack/",
+      "publishedAt": "2026-11-20T09:08:35+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "credential"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "JPMorgan, Visa, Mastercard Cite Third-Party Incidents Amid Data Leak",
+      "url": "https://www.securityweek.com/jpmorgan-visa-mastercard-cite-third-party-incidents-amid-data-leak/",
+      "publishedAt": "2026-11-20T07:35:46+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "finance",
+            "label": "Banking / financial services",
+            "method": "company",
+            "confidence": "Company-based suggestion",
+            "evidence": [
+              "JPMorgan"
+            ],
+            "reason": "A named company or business type maps to this category; this does not establish victim industry."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "extortion"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "Data Leak"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "ROMULUS ClickFix Attacks Deliver RAT That Can Spy on Users and Control PCs",
       "url": "https://thehackernews.com/2026/11/romulus-clickfix-attacks-deliver-rat.html",
       "publishedAt": "2026-11-20T07:11:39+00:00",
@@ -1039,6 +1754,35 @@
             "confidence": "Explicit term match"
           }
         ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "ISC Stormcast For Friday, November 20th, 2026 https://isc.sans.edu/podcastdetail/10188, (Fri, Nov 20th)",
+      "url": "https://isc.sans.edu/diary/rss/33538",
+      "publishedAt": "2026-11-20T02:00:02+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
@@ -1342,6 +2086,46 @@
             "label": "Vulnerability / exploitation",
             "evidence": [
               "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Newly Patched VMware vCenter Flaw Exploited as Zero-Day by Chinese APT",
+      "url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/",
+      "publishedAt": "2026-11-19T19:21:06+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploited",
+              "Zero-Day",
+              "exploited"
             ],
             "confidence": "Explicit term match"
           }
@@ -2136,6 +2920,64 @@
       }
     },
     {
+      "title": "ISC Stormcast For Thursday, November 19th, 2026 https://isc.sans.edu/podcastdetail/10186, (Thu, Nov 19th)",
+      "url": "https://isc.sans.edu/diary/rss/33536",
+      "publishedAt": "2026-11-19T02:00:03+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Treat Your Honeypot Analysis Like Code: Git, Pull Requests and a Human Gate for AI &#x5b;Guest Diary&#x5d;, (Wed, Nov 18th)",
+      "url": "https://isc.sans.edu/diary/rss/33534",
+      "publishedAt": "2026-11-19T01:53:48+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Ukraine, FBI arrest ransomware gang members tied to $40M in ransoms",
       "url": "https://www.bleepingcomputer.com/news/security/ukraine-fbi-arrest-ransomware-gang-members-tied-to-40m-in-ransoms/",
       "publishedAt": "2026-11-18T23:08:33+00:00",
@@ -2216,6 +3058,54 @@
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Java4Shell, NGINX2Shell and more: Why we are not at \"Yellow\", (Wed, Nov 18th)",
+      "url": "https://isc.sans.edu/diary/rss/33532",
+      "publishedAt": "2026-11-18T19:54:50+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "m365",
+            "label": "Microsoft 365 / identity",
+            "evidence": [
+              "Microsoft 365"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerability",
+              "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
@@ -2334,6 +3224,46 @@
             "label": "Vulnerability / exploitation",
             "evidence": [
               "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "2026-022: Critical vulnerabilities in Nginx",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-022/",
+      "publishedAt": "2026-11-18T17:30:42+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities",
+              "CVE-2026-123007",
+              "exploitation"
             ],
             "confidence": "Explicit term match"
           }
@@ -2782,6 +3712,46 @@
       }
     },
     {
+      "title": "2026-021: High Severity Vulnerability in Java SE and OpenJDK",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-021/",
+      "publishedAt": "2026-11-18T09:11:05+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "CVE-2026-114938",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Hackers Exploiting Critical Puppet RCE Flaw Affecting Enterprise Management Servers",
       "url": "https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html",
       "publishedAt": "2026-11-18T08:24:31+00:00",
@@ -2967,6 +3937,74 @@
             "confidence": "Explicit term match"
           }
         ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Attackers Used Optimizely to A/B Test Malware on Top Websites",
+      "url": "https://krebsonsecurity.com/2026/11/attackers-used-optimizely-to-a-b-test-malware-on-top-websites/",
+      "publishedAt": "2026-11-18T02:52:04+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "exploits",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "ISC Stormcast For Wednesday, November 18th, 2026 https://isc.sans.edu/podcastdetail/10184, (Wed, Nov 18th)",
+      "url": "https://isc.sans.edu/diary/rss/33528",
+      "publishedAt": "2026-11-18T02:00:03+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
@@ -3296,6 +4334,44 @@
       }
     },
     {
+      "title": "Borrowed Code, Real Consequences: What OPTIMJACK Teaches Us",
+      "url": "https://unit42.paloaltonetworks.com/optimjack-supply-chain-attack/",
+      "publishedAt": "2026-11-17T20:43:14+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "supply-chain",
+            "label": "Software supply chain",
+            "evidence": [
+              "supply chain"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Researchers Claim Two RCE Exploits That Bypass Telegram’s New Android Defenses",
       "url": "https://thehackernews.com/2026/11/researchers-claim-two-rce-exploits-that.html",
       "publishedAt": "2026-11-17T19:34:20+00:00",
@@ -3410,6 +4486,35 @@
             "confidence": "Explicit term match"
           }
         ],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Security for the agentic era, powered by Microsoft Perception",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/17/security-for-the-agentic-era-powered-by-microsoft-perception/",
+      "publishedAt": "2026-11-17T18:14:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
         "topics": [],
         "regions": [],
         "startupRelevant": false,
@@ -3606,6 +4711,53 @@
             "requires": "Identity-provider sign-in, MFA, and audit logs"
           }
         ],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "The risks of device code authentication for AI coding agents",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/17/the-risks-of-device-code-authentication-for-ai-coding-agents/",
+      "publishedAt": "2026-11-17T15:00:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "GitHub"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "phishing"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
     },
@@ -3826,6 +4978,46 @@
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "A phishing page interested in MX records, (Tue, Nov 17th)",
+      "url": "https://isc.sans.edu/diary/rss/33526",
+      "publishedAt": "2026-11-17T10:56:38+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "phishing",
+              "credentials",
+              "password"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
@@ -4125,6 +5317,97 @@
       }
     },
     {
+      "title": "ISC Stormcast For Tuesday, November 17th, 2026 https://isc.sans.edu/podcastdetail/10182, (Tue, Nov 17th)",
+      "url": "https://isc.sans.edu/diary/rss/33524",
+      "publishedAt": "2026-11-17T02:05:15+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "High volume phishing campaign uses Microsoft 365 outage lures to target multiple industry sectors",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/16/high-volume-phishing-campaign-uses-microsoft-365-outage-lures-target-multiple-industry-sectors-2/",
+      "publishedAt": "2026-11-17T00:08:41+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "m365",
+            "label": "Microsoft 365 / identity",
+            "evidence": [
+              "Microsoft 365"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "phishing"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [
+          {
+            "id": "global",
+            "label": "Global scope explicitly mentioned",
+            "evidence": [
+              "worldwide"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [
+          {
+            "id": "identity",
+            "title": "Unusual successful sign-ins",
+            "requires": "Identity-provider sign-in, MFA, and audit logs"
+          }
+        ],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-115731 · Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-115731",
       "publishedAt": "2026-11-17T00:00:00+00:00",
@@ -4168,6 +5451,35 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-12-01",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "QUIC and Covert: Novel HTTP/3-Powered RATs Target Southeast Asian Governments",
+      "url": "https://unit42.paloaltonetworks.com/custom-rats-target-southeast-asia-governments/",
+      "publishedAt": "2026-11-16T23:00:55+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "Gemini AI agents repeatedly bypassed safeguards to attack real website",
@@ -4570,6 +5882,46 @@
       }
     },
     {
+      "title": "Scans for LiteLLM/Starlette (CVE-2026-42271, CVE-2026-48710), (Mon, Nov 16th)",
+      "url": "https://isc.sans.edu/diary/rss/33522",
+      "publishedAt": "2026-11-16T13:11:04+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-42271",
+              "CVE-2026-48710",
+              "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Microsoft: Windows Server 2016 reaches end of support in 60 days",
       "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-server-2016-reaches-end-of-support-in-60-days/",
       "publishedAt": "2026-11-16T12:53:18+00:00",
@@ -4954,6 +6306,35 @@
       }
     },
     {
+      "title": "ISC Stormcast For Monday, November 16th, 2026 https://isc.sans.edu/podcastdetail/10180, (Mon, Nov 16th)",
+      "url": "https://isc.sans.edu/diary/rss/33520",
+      "publishedAt": "2026-11-16T02:00:05+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "FBI warns ARTEX AI hacking tool is powering global cyberattacks",
       "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks/",
       "publishedAt": "2026-11-15T18:29:53+00:00",
@@ -5011,6 +6392,35 @@
             "confidence": "Explicit term match"
           }
         ],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "YARA-X 1.23.0 Release, (Sun, Nov 15th)",
+      "url": "https://isc.sans.edu/diary/rss/33496",
+      "publishedAt": "2026-11-15T18:17:27+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
         "startupRelevant": false,
         "startupReason": "",
         "hunts": [],
@@ -5267,6 +6677,35 @@
             "confidence": "Explicit term match"
           }
         ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "SCKit abuses ScreenConnect to deploy remote access and target technician sessions",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/13/sckit-abuses-screenconnect-deploy-remote-access-target-technician-sessions/",
+      "publishedAt": "2026-11-13T21:31:44+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
@@ -6272,6 +7711,84 @@
       }
     },
     {
+      "title": "2026-020: Critical Vulnerabilities in Citrix NetScaler ADC and NetScaler Gateway",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-020/",
+      "publishedAt": "2026-11-12T17:20:53+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerabilities",
+              "vulnerabilities",
+              "CVE-2026-120868"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Trained to betray: How post-training supply chain attacks hijack coding agents",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents/",
+      "publishedAt": "2026-11-12T17:00:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "supply-chain",
+            "label": "Software supply chain",
+            "evidence": [
+              "supply chain"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Critical Red Hat Quay Flaw Lets Attackers Read and Overwrite All Private Container Images in a Registry",
       "url": "https://thehackernews.com/2026/11/critical-red-hat-quay-flaw-lets.html",
       "publishedAt": "2026-11-12T16:27:01+00:00",
@@ -6371,6 +7888,57 @@
         ],
         "environments": [],
         "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Attackers Use Autonomous AI to Target Semiconductor, Defense and Civil Society Sectors",
+      "url": "https://unit42.paloaltonetworks.com/cairn-framework-ai-autonomous-attacks/",
+      "publishedAt": "2026-11-12T15:00:31+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "manufacturing",
+            "label": "Manufacturing",
+            "evidence": [
+              "Semiconductor",
+              "semiconductor"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "manufacturing",
+            "label": "Manufacturing",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "Semiconductor",
+              "semiconductor"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
@@ -6782,6 +8350,151 @@
       }
     },
     {
+      "title": "ARTEX and AI-Powered Red Teaming Tools: What Defenders Need to Know",
+      "url": "https://unit42.paloaltonetworks.com/artex-and-ai-powered-red-teaming-tools/",
+      "publishedAt": "2026-11-11T23:00:53+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "The global socket: how threat actors are weaponizing GSocket for stealthy C2",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/11/global-socket-how-threat-actors-weaponizing-gsocket-stealthy-c2/",
+      "publishedAt": "2026-11-11T19:49:57+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Who Runs the Ransomware Group Qilin?",
+      "url": "https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/",
+      "publishedAt": "2026-11-11T18:06:01+00:00",
+      "source": "Krebs on Security",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "Ransomware",
+              "ransomware"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Lessons from 59 Linux Kernel Bug Reports",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/11/lessons-from-59-linux-kernel-bug-reports/",
+      "publishedAt": "2026-11-11T16:55:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities",
+              "exploits"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "Critical Zoom Workplace Flaw Could Allow Unauthenticated Remote Privilege Escalation",
       "url": "https://thehackernews.com/2026/11/critical-zoom-workplace-flaw-could.html",
       "publishedAt": "2026-11-11T16:12:46+00:00",
@@ -6873,6 +8586,35 @@
         "regions": [],
         "startupRelevant": true,
         "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "The XG Files: Falcon C2 Flying Under The (Browser) Radar",
+      "url": "https://unit42.paloaltonetworks.com/falcon-c2-browser-compromise/",
+      "publishedAt": "2026-11-11T15:00:23+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
@@ -7224,6 +8966,92 @@
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Detecting sleeper agents hiding in AI model neurons",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/10/detecting-sleeper-agents-hiding-in-ai-model-neurons/",
+      "publishedAt": "2026-11-10T23:00:00+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Microsoft Fixes Nearly 1,100 Security Vulnerabilities",
+      "url": "https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/",
+      "publishedAt": "2026-11-10T21:55:03+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "m365",
+            "label": "Microsoft 365 / identity",
+            "evidence": [
+              "Outlook"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "windows",
+            "label": "Windows",
+            "evidence": [
+              "Windows"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerabilities",
+              "vulnerabilities",
+              "zero-day"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
@@ -7988,6 +9816,35 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "FORGE Lab uses agentic tools to identify memory safety issues in Rust",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/09/forge-lab-uses-agentic-tools-to-identify-memory-safety-issues-in-rust/",
+      "publishedAt": "2026-11-09T20:17:31+00:00",
+      "source": "Microsoft Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-102895 · GPUStack Improper Authentication Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-102895",
       "publishedAt": "2026-11-09T00:00:00+00:00",
@@ -8176,6 +10033,35 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "Turning Up the Heat: Inside the Attacks on Europe’s Refrigeration Systems",
+      "url": "https://unit42.paloaltonetworks.com/europes-refrigeration-systems-attacks/",
+      "publishedAt": "2026-11-06T21:15:09+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-19868 · SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868",
       "publishedAt": "2026-11-06T00:00:00+00:00",
@@ -8230,6 +10116,35 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "Want to Rent an Internet Address at the White House?",
+      "url": "https://krebsonsecurity.com/2026/11/want-to-rent-an-internet-address-at-the-white-house/",
+      "publishedAt": "2026-11-05T04:36:17+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2024-27834 · Apple Multiple Products Improper Authentication Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-27834",
       "publishedAt": "2026-11-04T00:00:00+00:00",
@@ -8273,6 +10188,46 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-11-18",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "Tech Firms Dismantle Botnet That Turned 1.3M TV Boxes Into Proxies",
+      "url": "https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/",
+      "publishedAt": "2026-11-03T02:24:31+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "evidence": [
+              "healthcare"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "healthcare"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-119977 · WordPress WordPress Core Time-of-check Time-of-use (TOCTOU) Race Condition Vulnerability",
@@ -8327,6 +10282,44 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-11-06",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "Unit 42 Threat Intelligence Highlights - Nov. 2, 2026",
+      "url": "https://unit42.paloaltonetworks.com/u42-threat-intelligence-highlights-oct-2026/",
+      "publishedAt": "2026-11-02T23:00:45+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "extortion"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-118527 · Ivanti Connect Secure Generation of Predictable Numbers or Identifiers Vulnerability",
@@ -8417,6 +10410,55 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-11-02",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated November 19)",
+      "url": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+      "publishedAt": "2026-10-29T18:00:34+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerabilities",
+              "CVE-2026-109618",
+              "CVE-2026-109619"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [
+          {
+            "id": "global",
+            "label": "Global scope explicitly mentioned",
+            "evidence": [
+              "globally"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-97229 · GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability",
@@ -8516,6 +10558,57 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-11-01",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "Unwrapping Retail Peak Season Cyber Threats",
+      "url": "https://unit42.paloaltonetworks.com/unwrapping-retail-cyber-threats/",
+      "publishedAt": "2026-10-28T18:00:10+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "retail",
+            "label": "Retail",
+            "evidence": [
+              "Retail",
+              "retail"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "retail",
+            "label": "Retail",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "Retail",
+              "retail"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "ransomware"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-41709 · Broadcom VMWare ESX Insufficient Logging Vulnerability",
@@ -8788,6 +10881,55 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "2026-018: Critical Vulnerabilities in PHP",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-018/",
+      "publishedAt": "2026-10-23T14:36:26+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "web applications"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerabilities",
+              "vulnerabilities",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-114625 · Arista VeloCloud Orchestrator SQL Injection Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-114625",
       "publishedAt": "2026-10-23T00:00:00+00:00",
@@ -8886,6 +11028,278 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-10-26",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "EMudhra Intermediate CA Certificates Compromised",
+      "url": "https://unit42.paloaltonetworks.com/emudhra-certificate-compromise/",
+      "publishedAt": "2026-10-22T17:15:32+00:00",
+      "source": "Unit 42",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "The Current Landscape of OAuth Attacks",
+      "url": "https://unit42.paloaltonetworks.com/current-landscape-oauth-attacks/",
+      "publishedAt": "2026-10-22T17:00:25+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "OAuth"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "OAuth"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [
+          {
+            "id": "oauth",
+            "title": "Unexpected OAuth application consent",
+            "requires": "Entra application audit logs in Microsoft Sentinel"
+          }
+        ],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "2026-019: Critical Vulnerability in GitLab Community and Enterprise Editions",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-019/",
+      "publishedAt": "2026-10-22T09:14:22+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "GitLab"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Widespread PHP Flaw May Cause Many Site Outages Today",
+      "url": "https://krebsonsecurity.com/2026/10/widespread-php-flaw-may-cause-many-site-outages-today/",
+      "publishedAt": "2026-10-21T15:26:07+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities",
+              "exploits",
+              "exploited"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "“Next Exploit Opportunities”: How a Threat Actor Used AI to Help Plan and Execute Multiple Types of Cybercrime Activities",
+      "url": "https://unit42.paloaltonetworks.com/ai-assisted-cybercrime-analysis/",
+      "publishedAt": "2026-10-21T14:00:24+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "credential"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploit"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "exfiltration"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Active Exploitation of May 2026 PAN-OS CVE-2026-0257 (Updated October 20)",
+      "url": "https://unit42.paloaltonetworks.com/active-exploitation-of-pan-os-cve-2026-0257/",
+      "publishedAt": "2026-10-20T20:30:42+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "Ransomware"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploitation",
+              "CVE-2026-0257",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-106931 · EG Secure Solutions SiteGuard Server Edition OS Command Injection Vulnerability",
@@ -9175,6 +11589,101 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site",
+      "url": "https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/",
+      "publishedAt": "2026-10-19T13:48:56+00:00",
+      "source": "Krebs on Security",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "Ransom",
+              "Extortion",
+              "ransomware"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Top 5 Initial Access Threat Vectors Observed by Unit 42 in September 2026",
+      "url": "https://unit42.paloaltonetworks.com/top-5-initial-access-vectors-september-2026/",
+      "publishedAt": "2026-10-16T17:47:54+00:00",
+      "source": "Unit 42",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "credential",
+              "phishing"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "exploits"
+            ],
+            "confidence": "Explicit term match"
+          },
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-102764 · BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-102764",
       "publishedAt": "2026-10-16T00:00:00+00:00",
@@ -9265,6 +11774,46 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "2026-017: Critical Vulnerability in Cisco Secure Email Gateway",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-017/",
+      "publishedAt": "2026-10-15T09:38:20+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "vulnerability",
+              "exploitation"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-21589 · Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-21589",
       "publishedAt": "2026-10-15T00:00:00+00:00",
@@ -9317,6 +11866,53 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-10-18",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "U.K. Sanctions Cryptomus for RU Money Laundering",
+      "url": "https://krebsonsecurity.com/2026/10/u-k-sanctions-cryptomus-for-ru-money-laundering/",
+      "publishedAt": "2026-10-14T14:22:49+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "payments",
+            "label": "Payments / e-commerce",
+            "evidence": [
+              "payments"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "ransomware",
+            "label": "Ransomware / extortion",
+            "evidence": [
+              "ransomware"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2026-105134 · Ahsay AhsayCBS Command Injection Vulnerability",
@@ -9499,6 +12095,53 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "Microsoft Patches More Than 1,400 Security Flaws",
+      "url": "https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/",
+      "publishedAt": "2026-10-13T23:24:53+00:00",
+      "source": "Krebs on Security",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "windows",
+            "label": "Windows",
+            "evidence": [
+              "Windows"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "vulnerabilities"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-104935 · Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-104935",
       "publishedAt": "2026-10-13T00:00:00+00:00",
@@ -9595,6 +12238,54 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-10-16",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "2026-016: Critical Vulnerability in GitLab CE and EE",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-016/",
+      "publishedAt": "2026-10-12T12:57:02+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "GitLab"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     },
     {
       "title": "CVE-2015-5477 · ISC BIND Data Processing Errors Vulnerability",
@@ -9817,6 +12508,46 @@
       "ransomwareUse": "Unknown"
     },
     {
+      "title": "2026-015: Critical Vulnerability in Multiple Atlassian Products",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-015/",
+      "publishedAt": "2026-10-07T07:52:48+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "vulnerability",
+              "exploitation"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
       "title": "CVE-2026-88779 · Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
       "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-88779",
       "publishedAt": "2026-10-04T00:00:00+00:00",
@@ -9947,6 +12678,86 @@
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-10-05",
       "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "2026-014: Critical Vulnerabilities in Citrix NetScaler ADC and Gateway",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-014/",
+      "publishedAt": "2026-09-27T17:40:52+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerabilities",
+              "vulnerabilities",
+              "exploitation"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "2026-013: Critical Vulnerability in F5 BIG-IP APM",
+      "url": "https://cert.europa.eu/publications/security-advisories/2026-013/",
+      "publishedAt": "2026-09-22T16:52:36+00:00",
+      "source": "CERT-EU",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Vulnerability",
+              "vulnerability",
+              "exploitation"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
     }
   ],
   "classification": {

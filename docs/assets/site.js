@@ -7,7 +7,14 @@ const fmt = value => {
 const FEED_SOURCE_HOSTS = Object.freeze({
   'BleepingComputer': ['www.bleepingcomputer.com', 'bleepingcomputer.com'],
   'The Hacker News': ['thehackernews.com', 'www.thehackernews.com'],
-  'CISA KEV': ['www.cisa.gov']
+  'CISA KEV': ['www.cisa.gov'],
+  "Krebs on Security": ["krebsonsecurity.com", "www.krebsonsecurity.com"],
+  "SecurityWeek": ["www.securityweek.com", "securityweek.com"],
+  "SANS Internet Storm Center": ["isc.sans.edu"],
+  "Unit 42": ["unit42.paloaltonetworks.com"],
+  "Microsoft Security": ["www.microsoft.com"],
+  "CERT-EU": ["cert.europa.eu"],
+  "The Record": ["therecord.media"],
 });
 const INDUSTRY_CATEGORIES = Object.freeze({"retail": "Retail", "hospitality": "Hospitality", "manufacturing": "Manufacturing", "saas": "SaaS / technology", "finance": "Banking / financial services", "healthcare": "Healthcare", "education": "Education", "government": "Government / public sector", "telecom": "Telecommunications", "transport": "Transport / logistics", "energy": "Energy / utilities", "cross-industry": "General / cross-industry"});
 function safeLink(value, source) {
@@ -25,7 +32,7 @@ function normalizeFeed(data) {
     environments: ['m365', 'aws', 'azure', 'windows', 'payments', 'web', 'ot'],
     regions: ['india', 'global'], topics: ['identity', 'ransomware', 'vulnerability', 'data', 'supply-chain']
   };
-  const items = data.items.slice(0, 240).flatMap(item => {
+  const items = data.items.slice(0, 400).flatMap(item => {
     if (!item || !safeLink(item.url, item.source) || typeof item.title !== 'string' || !item.title.trim() || typeof item.publishedAt !== 'string' || !Number.isFinite(Date.parse(item.publishedAt))) return [];
     const raw = item.intel && typeof item.intel === 'object' ? item.intel : {};
     const intel = {version: feedText(raw.version, 40), basis: feedText(raw.basis, 100), scope: feedText(raw.scope, 1000), startupRelevant: raw.startupRelevant === true, startupReason: feedText(raw.startupReason, 1000)};
@@ -39,7 +46,7 @@ function normalizeFeed(data) {
     ['dateKind', 'requiredAction', 'ransomwareUse', 'catalogDueDate', 'cve'].forEach(key => { clean[key] = feedText(item[key], 2000); });
     return [clean];
   });
-  const sources = (Array.isArray(data.sources) ? data.sources : []).slice(0, 3).filter(s => s && Object.hasOwn(FEED_SOURCE_HOSTS, s.name)).map(s => ({name: s.name, status: s.status === 'ok' ? 'ok' : 'unavailable', lastSuccessAt: feedText(s.lastSuccessAt, 80)}));
+  const sources = (Array.isArray(data.sources) ? data.sources : []).slice(0, Object.keys(FEED_SOURCE_HOSTS).length).filter(s => s && Object.hasOwn(FEED_SOURCE_HOSTS, s.name)).map(s => ({name: s.name, status: s.status === 'ok' ? 'ok' : 'unavailable', lastSuccessAt: feedText(s.lastSuccessAt, 80)}));
   const rawClassification = data.classification && typeof data.classification === 'object' ? data.classification : {};
   const classification = {aiStatus: feedText(rawClassification.aiStatus, 50), aiCategorized: Number.isFinite(rawClassification.aiCategorized) ? Math.max(0, rawClassification.aiCategorized) : 0, cachedRecords: Number.isFinite(rawClassification.cachedRecords) ? Math.max(0, rawClassification.cachedRecords) : 0, pending: Number.isFinite(rawClassification.pending) ? Math.max(0, rawClassification.pending) : 0};
   return {checkedAt: data.checkedAt, sources, items, classification};

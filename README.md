@@ -11,7 +11,7 @@ Public static site hosted by GitHub Pages from `main:/docs`, using the custom do
 
 ## News updates
 
-`python scripts/refresh_news.py` fetches headlines from BleepingComputer and The Hacker News. Only titles, timestamps, attribution, and original links are published. Up to 240 records are kept; previously fetched records survive temporary feed failures. Browser rendering uses text nodes, not feed HTML.
+`python scripts/refresh_news.py` fetches headlines from BleepingComputer and The Hacker News. Only titles, timestamps, attribution, and original links are published. Up to 400 records are kept; previously fetched records survive temporary feed failures. Browser rendering uses text nodes, not feed HTML.
 
 The **Refresh cyber headlines** Actions workflow runs every six hours (GitHub may delay scheduled jobs), on updater changes, and manually through Actions. It commits the generated `docs/data/news.json` and explicitly requests a Pages rebuild because `GITHUB_TOKEN` commits do not trigger one automatically. It needs only the repository-provided token with contents/pages write permission, no external secrets. Public repositories may have schedules disabled by GitHub after 60 days without repository activity; check Actions if updates become stale.
 
@@ -56,3 +56,9 @@ The shared taxonomy covers retail, hospitality, manufacturing, SaaS/technology, 
 The scheduled workflow currently uses **keyword/company tagging only**. No AI request, model permission, API key, or API billing is enabled in that workflow. `scripts/classify_ai.py` is an optional, unscheduled adapter with quoted-evidence validation and bounded calls; it is not the active classifier. The published `classification.aiStatus` records `disabled`. Any future AI integration must keep model suggestions distinguishable from source evidence and credentials out of the website.
 
 The backend category taxonomy, browser allowlist and static selector options must be updated together when adding a sector. `scripts/test_categories.py` covers industry distinctions, company mapping, rejected model suggestions, and graceful service unavailability; AI tests use mocks only.
+
+## Source collection
+
+Ten scheduled sources: BleepingComputer, The Hacker News, CISA KEV (official GitHub mirror), Krebs on Security, SecurityWeek, SANS Internet Storm Center, Unit 42, Microsoft Security, CERT-EU, and The Record. The collection combines research, reporting, catalog entries and advisories; not every entry is an incident report. Seven new feed endpoints were checked before enabling them. CERT-In remains a manual official-guidance link; its feed is not ingested.
+
+All feeds use the existing bounded XML parser, HTTPS redirect checks, per-source headline URL allowlists, retry/cached-data fallback, and read-only ingestion job. Up to 100 RSS records per source response and 400 combined records are retained, with a four-megabyte publication/browser limit. Source status and last successful fetch are tracked individually. The browser source allowlist and publisher validator must be updated together. Publisher text is treated as untrusted, and only matched category evidence—not article HTML—is rendered. CERT-EU's CET/CEST RSS timestamps are normalized to explicit UTC offsets.

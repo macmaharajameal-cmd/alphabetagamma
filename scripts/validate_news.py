@@ -12,6 +12,13 @@ SOURCE_HOSTS = {
     'BleepingComputer': {'www.bleepingcomputer.com', 'bleepingcomputer.com'},
     'The Hacker News': {'thehackernews.com', 'www.thehackernews.com'},
     'CISA KEV': {'www.cisa.gov'},
+    'Krebs on Security': {'www.krebsonsecurity.com', 'krebsonsecurity.com'},
+    'SecurityWeek': {'securityweek.com', 'www.securityweek.com'},
+    'SANS Internet Storm Center': {'isc.sans.edu'},
+    'Unit 42': {'unit42.paloaltonetworks.com'},
+    'Microsoft Security': {'www.microsoft.com'},
+    'CERT-EU': {'cert.europa.eu'},
+    'The Record': {'therecord.media'},
 }
 HUNT_IDS = {'identity', 'powershell', 'persistence', 'oauth'}
 
@@ -32,7 +39,7 @@ def text(value, maximum):
 
 
 def validate_news(data):
-    if not isinstance(data, dict) or not isinstance(data.get('items'), list) or not 1 <= len(data['items']) <= 240:
+    if not isinstance(data, dict) or not isinstance(data.get('items'), list) or not 1 <= len(data['items']) <= 400:
         raise ValueError('Invalid feed collection')
     if not text(data.get('checkedAt'), 80):
         raise ValueError('Invalid refresh timestamp')

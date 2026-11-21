@@ -19,6 +19,13 @@ SOURCES = [
     ('BleepingComputer', 'https://www.bleepingcomputer.com/feed/', {'www.bleepingcomputer.com', 'bleepingcomputer.com'}),
     ('The Hacker News', 'https://feeds.feedburner.com/TheHackersNews', {'thehackernews.com', 'www.thehackernews.com'}),
     ('CISA KEV', 'https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json', {'www.cisa.gov'}),
+    ('Krebs on Security', 'https://krebsonsecurity.com/feed/', {'www.krebsonsecurity.com', 'krebsonsecurity.com'}),
+    ('SecurityWeek', 'https://www.securityweek.com/feed/', {'securityweek.com', 'www.securityweek.com'}),
+    ('SANS Internet Storm Center', 'https://isc.sans.edu/rssfeed_full.xml', {'isc.sans.edu'}),
+    ('Unit 42', 'https://unit42.paloaltonetworks.com/feed/', {'unit42.paloaltonetworks.com'}),
+    ('Microsoft Security', 'https://www.microsoft.com/en-us/security/blog/feed/', {'www.microsoft.com'}),
+    ('CERT-EU', 'https://cert.europa.eu/publications/security-advisories-rss', {'cert.europa.eu'}),
+    ('The Record', 'https://therecord.media/feed', {'therecord.media'}),
 ]
 INCIDENT = re.compile(r'breach|ransomware|data (?:leak|theft|expos)|stolen|compromis|cyberattack|cyber.attack|extortion|hackers (?:steal|leak)|security incident', re.I)
 
@@ -90,14 +97,17 @@ def fetch_once(source):
         return kev_items(body)
     root = parse_feed_xml(body)
     items = []
-    for node in root.findall('.//item'):
+    for node in root.findall('.//item')[:100]:
         title = ' '.join((node.findtext('title') or '').split())[:500]
         link = (node.findtext('link') or '').strip()
         parsed = urlparse(link)
         if not title or not valid_source_url(link, name):
             continue
         try:
-            published = parsedate_to_datetime(node.findtext('pubDate') or '')
+            date_text = (node.findtext('pubDate') or '').strip()
+            # CERT-EU uses named Central European offsets in its RSS dates.
+            date_text = re.sub(r'\bCEST$', '+0200', re.sub(r'\bCET$', '+0100', date_text))
+            published = parsedate_to_datetime(date_text)
             if published.tzinfo is None:
                 published = published.replace(tzinfo=timezone.utc)
             published = published.astimezone(timezone.utc).isoformat()
@@ -124,7 +134,7 @@ def main():
     combined = {item['url']: item for item in previous.get('items', [])}
     statuses = []
     success_count = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         futures = [(source, pool.submit(fetch, source)) for source in SOURCES]
         for source, future in futures:
             name, url, _ = source
@@ -141,7 +151,7 @@ def main():
             except Exception as error:
                 statuses.append({'name': name, 'feedUrl': url, 'status': 'unavailable', 'lastSuccessAt': old.get('lastSuccessAt')})
                 print(f'{name}: unavailable ({type(error).__name__}); retained previous headlines')
-    items = sorted(combined.values(), key=lambda item: item['publishedAt'], reverse=True)[:240]
+    items = sorted(combined.values(), key=lambda item: item['publishedAt'], reverse=True)[:400]
     for item in items:
         old = item.get('intel', {})
         if old.get('version') != VERSION:
