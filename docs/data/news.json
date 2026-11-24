@@ -1,68 +1,126 @@
 {
-  "checkedAt": "2026-11-23T20:21:22.066280+00:00",
+  "checkedAt": "2026-11-24T04:52:42.626022+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.187396+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:41.706789+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.226420+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:41.706878+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.226496+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:41.893709+00:00"
     },
     {
       "name": "Krebs on Security",
       "feedUrl": "https://krebsonsecurity.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.226518+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:41.893736+00:00"
     },
     {
       "name": "SecurityWeek",
       "feedUrl": "https://www.securityweek.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.258656+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:41.893745+00:00"
     },
     {
       "name": "SANS Internet Storm Center",
       "feedUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.368391+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:42.019551+00:00"
     },
     {
       "name": "Unit 42",
       "feedUrl": "https://unit42.paloaltonetworks.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.368441+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:42.019602+00:00"
     },
     {
       "name": "Microsoft Security",
       "feedUrl": "https://www.microsoft.com/en-us/security/blog/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:21.389681+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:42.019625+00:00"
     },
     {
       "name": "CERT-EU",
       "feedUrl": "https://cert.europa.eu/publications/security-advisories-rss",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:22.065378+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:42.625310+00:00"
     },
     {
       "name": "The Record",
       "feedUrl": "https://therecord.media/feed",
       "status": "ok",
-      "lastSuccessAt": "2026-11-23T20:21:22.065413+00:00"
+      "lastSuccessAt": "2026-11-24T04:52:42.625339+00:00"
     }
   ],
   "items": [
+    {
+      "title": "Scanning from Subnet 109.160.32.0/24, (Mon, Nov 23rd)",
+      "url": "https://isc.sans.edu/diary/rss/33550",
+      "publishedAt": "2026-11-24T02:32:00+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "ISC Stormcast For Tuesday, November 24th, 2026 https://isc.sans.edu/podcastdetail/10192, (Tue, Nov 24th)",
+      "url": "https://isc.sans.edu/diary/rss/33552",
+      "publishedAt": "2026-11-24T02:00:04+00:00",
+      "source": "SANS Internet Storm Center",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "Hackers breach Austrian Foreign Ministry website, access diplomats' contact details",
       "url": "https://therecord.media/austrian-foreign-ministry-says-website-hacked",
@@ -92,6 +150,44 @@
               "Ministry"
             ],
             "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "South Korea’s power giant KEPCO confirms data breach impacting 1.5 million",
+      "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
+      "publishedAt": "2026-11-23T20:54:51+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
           }
         ],
         "environments": [],
@@ -1261,6 +1357,96 @@
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
+    },
+    {
+      "title": "CVE-2026-133968 · Project MONAI MONAI Label Path Traversal Vulnerability",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-133968",
+      "publishedAt": "2026-11-23T00:00:00+00:00",
+      "dateKind": "Added to CISA KEV",
+      "source": "CISA KEV",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-133968",
+              "Vulnerability",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
+      },
+      "cve": "CVE-2026-133968",
+      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "catalogDueDate": "2026-11-26",
+      "ransomwareUse": "Unknown"
+    },
+    {
+      "title": "CVE-2026-134624 · N-able MailAssure (SpamExperts) Server-Side Request Forgery (SSRF) Vulnerability",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-134624",
+      "publishedAt": "2026-11-23T00:00:00+00:00",
+      "dateKind": "Added to CISA KEV",
+      "source": "CISA KEV",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "CVE-2026-134624",
+              "Vulnerability",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
+      },
+      "cve": "CVE-2026-134624",
+      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
+      "catalogDueDate": "2026-11-26",
+      "ransomwareUse": "Unknown"
     },
     {
       "title": "Hackers exploit GL.iNet cloud flaw to infect routers, KVM devices",
@@ -5593,7 +5779,7 @@
       "cve": "CVE-2024-10441",
       "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
       "catalogDueDate": "2026-11-21",
-      "ransomwareUse": "Unknown"
+      "ransomwareUse": "Known"
     },
     {
       "title": "CVE-2026-40217 · BerriAI LiteLLM Unprotected Alternate Channel Vulnerability",
