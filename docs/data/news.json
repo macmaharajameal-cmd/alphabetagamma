@@ -1,68 +1,358 @@
 {
-  "checkedAt": "2026-11-26T12:53:19.046437+00:00",
+  "checkedAt": "2026-11-26T22:26:36.634133+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.002647+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.675479+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.232683+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.766902+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.232727+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.851098+00:00"
     },
     {
       "name": "Krebs on Security",
       "feedUrl": "https://krebsonsecurity.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.232739+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.851121+00:00"
     },
     {
       "name": "SecurityWeek",
       "feedUrl": "https://www.securityweek.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.232749+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.851133+00:00"
     },
     {
       "name": "SANS Internet Storm Center",
       "feedUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.420603+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.971494+00:00"
     },
     {
       "name": "Unit 42",
       "feedUrl": "https://unit42.paloaltonetworks.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.420648+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.971537+00:00"
     },
     {
       "name": "Microsoft Security",
       "feedUrl": "https://www.microsoft.com/en-us/security/blog/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:18.420670+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:35.983782+00:00"
     },
     {
       "name": "CERT-EU",
       "feedUrl": "https://cert.europa.eu/publications/security-advisories-rss",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:19.045559+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:36.633362+00:00"
     },
     {
       "name": "The Record",
       "feedUrl": "https://therecord.media/feed",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T12:53:19.045596+00:00"
+      "lastSuccessAt": "2026-11-26T22:26:36.633390+00:00"
     }
   ],
   "items": [
+    {
+      "title": "OpenAI warns GPT-6.2 Astra will hit usage limits 40% faster because it fixed a bug",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-warns-gpt-62-astra-will-hit-usage-limits-40-percent-faster-because-it-fixed-a-bug/",
+      "publishedAt": "2026-11-26T21:06:22+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "ThreatsDay: 10M NGINX Services at Risk, 250+ Malicious Extensions, AI Server Hijacking + 17 More Stories",
+      "url": "https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html",
+      "publishedAt": "2026-11-26T19:39:57+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "Stolen"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "NordVPN Black Friday Deal: Get 78% off VPN plans in 2026",
+      "url": "https://www.bleepingcomputer.com/news/security/nordvpn-black-friday-deal-get-78-percent-off-vpn-plans-in-2026/",
+      "publishedAt": "2026-11-26T17:58:42+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Fake paid expert interviews impersonate brands to steal Google logins",
+      "url": "https://www.bleepingcomputer.com/news/apple/fake-paid-expert-interviews-impersonate-brands-to-steal-google-logins/",
+      "publishedAt": "2026-11-26T17:15:27+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "phishing",
+              "credentials"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "FIFA Says It Has Been Victim of a Cyberattack Accessing ‘Personal and Business Information’",
+      "url": "https://www.securityweek.com/fifa-says-it-has-been-victim-of-a-cyberattack-accessing-personal-and-business-information/",
+      "publishedAt": "2026-11-26T17:06:55+00:00",
+      "source": "SecurityWeek",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Remus malware steals Gmail messages via fake Google Sheets extension",
+      "url": "https://www.bleepingcomputer.com/news/security/remus-malware-steals-gmail-messages-via-fake-google-sheets-extension/",
+      "publishedAt": "2026-11-26T15:23:28+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "Chrome"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "zero-day",
+              "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "North Korea-Linked PolinRider Poisons Over 7,600 GitHub Repositories to Spread Malware",
+      "url": "https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html",
+      "publishedAt": "2026-11-26T15:13:41+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [
+          {
+            "id": "web",
+            "label": "Web / SaaS applications",
+            "evidence": [
+              "GitHub"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Critical Juniper Session Smart Conductor Flaw Exploited in Attacks",
+      "url": "https://www.securityweek.com/critical-juniper-session-smart-conductor-flaw-exploited-in-attacks/",
+      "publishedAt": "2026-11-26T13:04:06+00:00",
+      "source": "SecurityWeek",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "Exploited",
+              "CVE-2026-103406",
+              "vulnerability"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "SYS010 malware abuses browser management to spy on Gmail, Outlook",
       "url": "https://www.bleepingcomputer.com/news/security/sys010-malware-abuses-browser-management-to-spy-on-gmail-outlook/",
@@ -15835,356 +16125,6 @@
         "hunts": [],
         "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
       }
-    },
-    {
-      "title": "CVE-2026-19868 · SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-19868",
-      "publishedAt": "2026-11-06T00:00:00+00:00",
-      "dateKind": "Added to CISA KEV",
-      "source": "CISA KEV",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "identity",
-            "label": "Identity / account access",
-            "evidence": [
-              "credentials",
-              "MFA"
-            ],
-            "confidence": "Explicit term match"
-          },
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-19868",
-              "Vulnerability",
-              "vulnerability"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": true,
-        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
-        "hunts": [],
-        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
-      },
-      "cve": "CVE-2026-19868",
-      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "catalogDueDate": "2026-11-20",
-      "ransomwareUse": "Unknown"
-    },
-    {
-      "title": "Want to Rent an Internet Address at the White House?",
-      "url": "https://krebsonsecurity.com/2026/11/want-to-rent-an-internet-address-at-the-white-house/",
-      "publishedAt": "2026-11-05T04:36:17+00:00",
-      "source": "Krebs on Security",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "CVE-2024-27834 · Apple Multiple Products Improper Authentication Vulnerability",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-27834",
-      "publishedAt": "2026-11-04T00:00:00+00:00",
-      "dateKind": "Added to CISA KEV",
-      "source": "CISA KEV",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2024-27834",
-              "Vulnerability",
-              "vulnerability"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
-      },
-      "cve": "CVE-2024-27834",
-      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "catalogDueDate": "2026-11-18",
-      "ransomwareUse": "Unknown"
-    },
-    {
-      "title": "Tech Firms Dismantle Botnet That Turned 1.3M TV Boxes Into Proxies",
-      "url": "https://krebsonsecurity.com/2026/11/tech-firms-dismantle-botnet-that-turned-1-3m-tv-boxes-into-proxies/",
-      "publishedAt": "2026-11-03T02:24:31+00:00",
-      "source": "Krebs on Security",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [
-          {
-            "id": "healthcare",
-            "label": "Healthcare",
-            "evidence": [
-              "healthcare"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "categories": [
-          {
-            "id": "healthcare",
-            "label": "Healthcare",
-            "method": "keyword",
-            "confidence": "Source keyword match",
-            "evidence": [
-              "healthcare"
-            ],
-            "reason": "Industry wording matched in the available source context."
-          }
-        ],
-        "environments": [],
-        "topics": [],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "CVE-2026-119977 · WordPress WordPress Core Time-of-check Time-of-use (TOCTOU) Race Condition Vulnerability",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-119977",
-      "publishedAt": "2026-11-03T00:00:00+00:00",
-      "dateKind": "Added to CISA KEV",
-      "source": "CISA KEV",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [
-          {
-            "id": "web",
-            "label": "Web / SaaS applications",
-            "evidence": [
-              "WordPress"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-119977",
-              "Vulnerability",
-              "vulnerability"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": true,
-        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
-        "hunts": [],
-        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
-      },
-      "cve": "CVE-2026-119977",
-      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "catalogDueDate": "2026-11-06",
-      "ransomwareUse": "Unknown"
-    },
-    {
-      "title": "Unit 42 Threat Intelligence Highlights - Nov. 2, 2026",
-      "url": "https://unit42.paloaltonetworks.com/u42-threat-intelligence-highlights-oct-2026/",
-      "publishedAt": "2026-11-02T23:00:45+00:00",
-      "source": "Unit 42",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "ransomware",
-            "label": "Ransomware / extortion",
-            "evidence": [
-              "extortion"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "CVE-2026-118527 · Ivanti Connect Secure Generation of Predictable Numbers or Identifiers Vulnerability",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-118527",
-      "publishedAt": "2026-10-30T00:00:00+00:00",
-      "dateKind": "Added to CISA KEV",
-      "source": "CISA KEV",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-118527",
-              "Vulnerability",
-              "vulnerability"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
-      },
-      "cve": "CVE-2026-118527",
-      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "catalogDueDate": "2026-11-13",
-      "ransomwareUse": "Unknown"
-    },
-    {
-      "title": "CVE-2026-111357 · Ivanti Connect Secure Missing Authentication for Critical Function Vulnerability",
-      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-111357",
-      "publishedAt": "2026-10-30T00:00:00+00:00",
-      "dateKind": "Added to CISA KEV",
-      "source": "CISA KEV",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-111357",
-              "Vulnerability",
-              "vulnerability"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Catalog entry: exploitation confirmed by CISA, geography and industry unspecified"
-      },
-      "cve": "CVE-2026-111357",
-      "requiredAction": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.",
-      "catalogDueDate": "2026-11-02",
-      "ransomwareUse": "Unknown"
     }
   ],
   "classification": {
