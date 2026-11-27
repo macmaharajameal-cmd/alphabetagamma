@@ -1,64 +1,64 @@
 {
-  "checkedAt": "2026-11-26T22:26:36.634133+00:00",
+  "checkedAt": "2026-11-27T05:10:04.103307+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.675479+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.368077+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.766902+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.649439+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.851098+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.649506+00:00"
     },
     {
       "name": "Krebs on Security",
       "feedUrl": "https://krebsonsecurity.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.851121+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.649521+00:00"
     },
     {
       "name": "SecurityWeek",
       "feedUrl": "https://www.securityweek.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.851133+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.649536+00:00"
     },
     {
       "name": "SANS Internet Storm Center",
       "feedUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.971494+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.665541+00:00"
     },
     {
       "name": "Unit 42",
       "feedUrl": "https://unit42.paloaltonetworks.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.971537+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.665609+00:00"
     },
     {
       "name": "Microsoft Security",
       "feedUrl": "https://www.microsoft.com/en-us/security/blog/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:35.983782+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:45.665635+00:00"
     },
     {
       "name": "CERT-EU",
       "feedUrl": "https://cert.europa.eu/publications/security-advisories-rss",
       "status": "ok",
-      "lastSuccessAt": "2026-11-26T22:26:36.633362+00:00"
+      "lastSuccessAt": "2026-11-27T05:09:46.185272+00:00"
     },
     {
       "name": "The Record",
       "feedUrl": "https://therecord.media/feed",
-      "status": "ok",
+      "status": "unavailable",
       "lastSuccessAt": "2026-11-26T22:26:36.633390+00:00"
     }
   ],
