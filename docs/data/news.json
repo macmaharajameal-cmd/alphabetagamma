@@ -1,68 +1,238 @@
 {
-  "checkedAt": "2026-11-27T15:19:13.723034+00:00",
+  "checkedAt": "2026-11-27T23:35:00.027059+00:00",
   "sources": [
     {
       "name": "BleepingComputer",
       "feedUrl": "https://www.bleepingcomputer.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:12.704890+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.093615+00:00"
     },
     {
       "name": "The Hacker News",
       "feedUrl": "https://feeds.feedburner.com/TheHackersNews",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083429+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.326569+00:00"
     },
     {
       "name": "CISA KEV",
       "feedUrl": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083495+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.326639+00:00"
     },
     {
       "name": "Krebs on Security",
       "feedUrl": "https://krebsonsecurity.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083508+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.326661+00:00"
     },
     {
       "name": "SecurityWeek",
       "feedUrl": "https://www.securityweek.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083521+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.326679+00:00"
     },
     {
       "name": "SANS Internet Storm Center",
       "feedUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083534+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.333372+00:00"
     },
     {
       "name": "Unit 42",
       "feedUrl": "https://unit42.paloaltonetworks.com/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083548+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.333406+00:00"
     },
     {
       "name": "Microsoft Security",
       "feedUrl": "https://www.microsoft.com/en-us/security/blog/feed/",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.083563+00:00"
+      "lastSuccessAt": "2026-11-27T23:34:59.556036+00:00"
     },
     {
       "name": "CERT-EU",
       "feedUrl": "https://cert.europa.eu/publications/security-advisories-rss",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.722258+00:00"
+      "lastSuccessAt": "2026-11-27T23:35:00.026290+00:00"
     },
     {
       "name": "The Record",
       "feedUrl": "https://therecord.media/feed",
       "status": "ok",
-      "lastSuccessAt": "2026-11-27T15:19:13.722288+00:00"
+      "lastSuccessAt": "2026-11-27T23:35:00.026323+00:00"
     }
   ],
   "items": [
+    {
+      "title": "pCloud confirms password manager hack after suspicious login alerts",
+      "url": "https://www.bleepingcomputer.com/news/security/pcloud-confirms-password-manager-hack-after-suspicious-login-alerts/",
+      "publishedAt": "2026-11-27T19:26:04+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "identity",
+            "label": "Identity / account access",
+            "evidence": [
+              "password",
+              "login"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": true,
+        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "New Boston Scientific data breach exposes personal, medical info",
+      "url": "https://www.bleepingcomputer.com/news/security/new-boston-scientific-data-breach-exposes-personal-medical-info/",
+      "publishedAt": "2026-11-27T18:57:42+00:00",
+      "source": "BleepingComputer",
+      "incident": true,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "evidence": [
+              "medical",
+              "Medical"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "healthcare",
+            "label": "Healthcare",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "medical",
+              "Medical"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "data",
+            "label": "Data exposure / theft",
+            "evidence": [
+              "breach"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Unpatched Cacti zero-day with public PoC gives remote code execution",
+      "url": "https://www.bleepingcomputer.com/news/security/unpatched-cacti-zero-day-with-public-poc-gives-remote-code-execution/",
+      "publishedAt": "2026-11-27T17:06:13+00:00",
+      "source": "BleepingComputer",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [],
+        "categories": [
+          {
+            "id": "cross-industry",
+            "label": "General / cross-industry",
+            "method": "general",
+            "confidence": "Industry not established",
+            "evidence": [],
+            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
+          }
+        ],
+        "environments": [],
+        "topics": [
+          {
+            "id": "vulnerability",
+            "label": "Vulnerability / exploitation",
+            "evidence": [
+              "zero-day",
+              "vulnerability",
+              "exploit"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
+    {
+      "title": "Suspected Vietnam-Linked Hackers Target Southeast Asia in South China Sea Espionage Campaign",
+      "url": "https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html",
+      "publishedAt": "2026-11-27T16:36:11+00:00",
+      "source": "The Hacker News",
+      "incident": false,
+      "intel": {
+        "version": "rules-2",
+        "basis": "Headline and publisher RSS context",
+        "sectors": [
+          {
+            "id": "government",
+            "label": "Government / public sector",
+            "evidence": [
+              "government"
+            ],
+            "confidence": "Explicit term match"
+          }
+        ],
+        "categories": [
+          {
+            "id": "government",
+            "label": "Government / public sector",
+            "method": "keyword",
+            "confidence": "Source keyword match",
+            "evidence": [
+              "government"
+            ],
+            "reason": "Industry wording matched in the available source context."
+          }
+        ],
+        "environments": [],
+        "topics": [],
+        "regions": [],
+        "startupRelevant": false,
+        "startupReason": "",
+        "hunts": [],
+        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
+      }
+    },
     {
       "title": "US Air Force cloud platform reportedly hacked in latest federal breach",
       "url": "https://www.bleepingcomputer.com/news/security/us-air-force-cloud-platform-reportedly-hacked-in-latest-federal-breach/",
@@ -15938,188 +16108,6 @@
         ],
         "environments": [],
         "topics": [],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "Microsoft Fixes Nearly 1,100 Security Vulnerabilities",
-      "url": "https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/",
-      "publishedAt": "2026-11-10T21:55:03+00:00",
-      "source": "Krebs on Security",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline and publisher RSS context",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [
-          {
-            "id": "m365",
-            "label": "Microsoft 365 / identity",
-            "evidence": [
-              "Outlook"
-            ],
-            "confidence": "Explicit term match"
-          },
-          {
-            "id": "windows",
-            "label": "Windows",
-            "evidence": [
-              "Windows"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "Vulnerabilities",
-              "vulnerabilities",
-              "zero-day"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": true,
-        "startupReason": "Potential relevance to small teams using the mentioned cloud, application, payment, or identity systems. Company size is not established by the source.",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "Git Patches Flaw That Lets Malicious Repositories Execute Code During Recursive Clones",
-      "url": "https://thehackernews.com/2026/11/git-patches-flaw-that-lets-malicious.html",
-      "publishedAt": "2026-11-10T19:23:10+00:00",
-      "source": "The Hacker News",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline only",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "CVE-2026-111760"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "SGLang RCE Exploit Breaches NEAR AI, Steals Data From 18 Agents and About 100 Users",
-      "url": "https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html",
-      "publishedAt": "2026-11-10T19:19:39+00:00",
-      "source": "The Hacker News",
-      "incident": true,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline only",
-        "sectors": [],
-        "categories": [
-          {
-            "id": "cross-industry",
-            "label": "General / cross-industry",
-            "method": "general",
-            "confidence": "Industry not established",
-            "evidence": [],
-            "reason": "No specific industry is established. Review the affected technology for relevance across sectors."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "Exploit"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "regions": [],
-        "startupRelevant": false,
-        "startupReason": "",
-        "hunts": [],
-        "scope": "Tags identify source wording; they do not establish victim industry, location, attribution, or impact."
-      }
-    },
-    {
-      "title": "Hackers Exploit Critical Xen Orchestra Auth Bypass Flaw to Gain Admin Access",
-      "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-xen-orchestra.html",
-      "publishedAt": "2026-11-10T18:12:21+00:00",
-      "source": "The Hacker News",
-      "incident": false,
-      "intel": {
-        "version": "rules-2",
-        "basis": "Headline only",
-        "sectors": [
-          {
-            "id": "saas",
-            "label": "SaaS / technology",
-            "evidence": [
-              "software company"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
-        "categories": [
-          {
-            "id": "saas",
-            "label": "SaaS / technology",
-            "method": "keyword",
-            "confidence": "Source keyword match",
-            "evidence": [
-              "software company"
-            ],
-            "reason": "Industry wording matched in the available source context."
-          }
-        ],
-        "environments": [],
-        "topics": [
-          {
-            "id": "vulnerability",
-            "label": "Vulnerability / exploitation",
-            "evidence": [
-              "Exploit"
-            ],
-            "confidence": "Explicit term match"
-          }
-        ],
         "regions": [],
         "startupRelevant": false,
         "startupReason": "",
